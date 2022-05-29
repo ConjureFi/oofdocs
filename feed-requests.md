@@ -4,9 +4,8 @@ We do help to run some reference feeds with a strong cosigner set, which can be 
 
 {% embed url="https://docs.google.com/spreadsheets/d/1syqS8Gpl7ZS9UC_Wr6giY057XebJu3bZKXhIDsN-DJ0/" %}
 
-To request a feed, [https://docs.google.com/forms/d/e/1FAIpQLSeZarxSNjeWI9xGMYx5nizt25u5kUXv2uuyTiPyGNCkEGmJbg/viewform?usp=sf\_link](https://docs.google.com/forms/d/e/1FAIpQLSeZarxSNjeWI9xGMYx5nizt25u5kUXv2uuyTiPyGNCkEGmJbg/viewform?usp=sf\_link)&#x20;
+To request a feed, [https://docs.google.com/forms/d/e/1FAIpQLSeZarxSNjeWI9xGMYx5nizt25u5kUXv2uuyTiPyGNCkEGmJbg/viewform?usp=sf\_link](https://docs.google.com/forms/d/e/1FAIpQLSeZarxSNjeWI9xGMYx5nizt25u5kUXv2uuyTiPyGNCkEGmJbg/viewform?usp=sf\_link)
 
-or ask on our Discord at&#x20;
+or ask on our Discord at
 
-https://discord.gg/aYmfQVvCMy
-
+[https://discord.gg/3Z2qvm9BDg](https://discord.gg/3Z2qvm9BDg)
