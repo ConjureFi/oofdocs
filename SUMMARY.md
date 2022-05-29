@@ -8,6 +8,12 @@
 * [Time Weighted Average Price using OOF](time-weighted-average-price-using-oof.md)
 * [Feed Requests](feed-requests.md)
 
+## Scry NFTs and Licenses
+
+* [Scry NFT Token](scry-nfts-and-licenses/scry-nft-token.md)
+* [Licensing](scry-nfts-and-licenses/licensing.md)
+* [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
+
 ## SMART CONTRACTS
 
 * [OpenOracleFramework.sol](smart-contracts/openoracleframework.sol.md)
