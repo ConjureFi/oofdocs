@@ -11,7 +11,7 @@
 ## Scry NFTs and Licenses
 
 * [Scry NFT Token](scry-nfts-and-licenses/scry-nft-token.md)
-* [Licensing](scry-nfts-and-licenses/licensing.md)
+* [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
 * [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
 
 ## SMART CONTRACTS
