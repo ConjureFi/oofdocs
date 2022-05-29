@@ -2,24 +2,20 @@
 
 **Site**
 
-[https://Conjure.Finance](https://conjure.finance/)
+[https://Scry.Finance](https://scry.finance)
 
 **Twitter**
 
-[https://twitter.com/Conjurefi](https://twitter.com/Conjurefi)
+[https://twitter.com/ScryProtocol](https://twitter.com/ScryProtocol)
 
 **Medium**
 
-[https://conjurefi.medium.com/](https://conjurefi.medium.com/)
+[https://ScryProtocol.medium.com/](https://scryprotocol.medium.com/)
 
 **GitHub**
 
-[https://github.com/conjurefi](https://github.com/conjurefi)****
-
-**Open Oracle Framework**
-
-[https://github.com/conjurefi/OpenOracleFramework](https://github.com/conjurefi/openoracleFramework)
+[https://github.com/Scryprotocol](https://github.com/Scryprotocol)
 
 Discord
 
-[https://discord.com/invite/aYmfQVvCMy](https://discord.com/invite/aYmfQVvCMy)
+[https://discord.gg/3Z2qvm9BDg](https://discord.gg/3Z2qvm9BDg)
