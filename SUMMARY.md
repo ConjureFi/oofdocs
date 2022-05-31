@@ -7,6 +7,7 @@
 * [Oracle Management](oracle-management.md)
 * [Time Weighted Average Price using OOF](time-weighted-average-price-using-oof.md)
 * [Feed Requests](feed-requests.md)
+* [Permissionless Data Requests and Data Providers](permissionless-data-requests-and-data-providers.md)
 
 ## Scry NFTs and Licenses
 
