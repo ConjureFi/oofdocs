@@ -17,6 +17,7 @@
 
 ## SMART CONTRACTS
 
+* [Solidity Contracts and Interface](smart-contracts/solidity-contracts-and-interface.md)
 * [OpenOracleFramework.sol](smart-contracts/openoracleframework.sol.md)
 * [OOFFactory.sol](smart-contracts/ooffactory.sol.md)
 * [Deployments](smart-contracts/deployments.md)
