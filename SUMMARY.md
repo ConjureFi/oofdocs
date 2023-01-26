@@ -5,6 +5,7 @@
 * [Data Feeds for Historical Tracking](data-feeds-for-historical-tracking.md)
 * [Oracle Spreadsheet Management and Creation](oracle-spreadsheet-management-and-creation.md)
 * [Oracle Creation](oracle-creation.md)
+* [Front End](front-end.md)
 * [Oracle Management](oracle-management.md)
 * [Time Weighted Average Price using OOF](time-weighted-average-price-using-oof.md)
 * [Feed Requests](feed-requests.md)
