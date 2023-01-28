@@ -1,6 +1,6 @@
 # Licensing and Perks
 
-At launch the contracts the node is fully open source and free to use. This license is represented by either a founder or license NFT and allows the holder full access to all contracts, tools, front end and node as they need.
+At launch the contracts are licensed under SCRY, a custom license which allows for testnet use freely and requires a license for mainnet use. This license is represented by either a founder or license NFT and allows the holder full access to all contracts, tools, front end and node as they need.
 
 ### Perks for Founders
 

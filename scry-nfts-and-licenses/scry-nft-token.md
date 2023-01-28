@@ -24,6 +24,10 @@ Founder NFTs - as these are both a stake in the protocol with a vote as well as 
 
 Licenses - These will be priced once the DAO has decided on the starting price in ETH at a 1y base.&#x20;
 
+#### Will there be an ERC20 token?
+
+At launch we have no intention for an ERC20 token. Please be careful of anyone advertising such a token. The DAO reserves the right to create one if they so choose but at the start there will be no ERC20.
+
 #### What happens if you dont pay the fee as a License holder?
 
 Anyone can burn your license if fees aren't paid and you'll need to buy a new one. This wont actually cost more than just renewing but you'll need to mint and resubmit your github.
