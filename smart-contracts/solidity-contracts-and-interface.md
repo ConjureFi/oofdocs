@@ -20,7 +20,7 @@ You can now use the feed value as needed.&#x20;
 
 
 
-Note that `feedValue / feedDecimals`
+Note that `feedValueRAW / feedDecimals`
 
 Should be used for the real value represented by the front end.
 
