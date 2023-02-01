@@ -6,18 +6,11 @@
 * [Official OOF Oracle](https://etherscan.io/address/0x00f0feed50dcdf57b4f1b532e8f5e7f291e0c84b#writeContract)
 * [OOF TWAP View](https://etherscan.io/address/0x76D98B6d5165F68cfD948702Bf92C3a53b5f57A1#code)
 
-### Goerli
+### Rinkeby
 
-* [Open Oracle Framework Factory](https://goerli.etherscan.io/address/0x4d65a4154b9FBD3B3BEB9c6Db90AAb1A28699df8#code)
-* [Official OOF Oracle](https://goerli.etherscan.io/address/0x7Bae4f06a69C7E6664E52C71465d19ab946F0377#code)\
-
-
-### Sepolia
-
-* [Open Oracle Framework Factory](https://sepolia.etherscan.io/address/0x24931d75C8018dDd5cEA07dF4fFd2894FcA45680#code)
-*   [Official OOF Oracle](https://sepolia.etherscan.io/address/0x63622676c54813C952421A3bA24ba6679AC44A4b)
-
-
+* [Open Oracle Framework Factory](https://rinkeby.etherscan.io/address/0xf02C97964d5CdEd674a8B23B035334F10A0EEC6E)
+* [Official OOF Oracle](https://rinkeby.etherscan.io/address/0x00f0feed50DcDF57b4f1B532E8f5e7f291E0C84b)
+* [OOF TWAP View](https://rinkeby.etherscan.io/address/0x695Ea29618d3a66fb2C3B1e95B352E561EaBa0Bc#code)
 
 ### Polygon
 

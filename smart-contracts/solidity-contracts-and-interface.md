@@ -4,7 +4,27 @@ description: How to hook up Scry Oracles to your contracts
 
 # Solidity Contracts and Interface
 
-## Scry Feed Lookup
+## Use Scry Feeds in Your Contracts
+
+#### SOLIDITY
+
+Take feedID in the fn params or hardcode with the interface to get the feed value. Set the oracleAddress to the address for the oracle with the feed you're using.
+
+```
+uint256 feedID = x;
+uint256 feedValueRAW, uint256 feedLastTimeStamp, uint256 feedDecimals = IOpenOracleFramework(oracleAddress).getFeed(feedID);
+uint256 feedValue = feedValueRAW / (10**18 * feedDecimals);
+```
+
+You can now use the feed value as needed.&#x20;
+
+
+
+Note that `feedValue / feedDecimals`
+
+Should be used for the real value represented by the front end.
+
+## **Scry Feed Lookup**
 
 [https://github.com/ScryProtocol/feedLookup](https://github.com/ScryProtocol/feedLookup)
 
@@ -61,21 +81,4 @@ interface IOpenOracleFramework {
 }
 ```
 
-### Use
-
-#### SOLIDITY
-
-Take feedID in the fn params or hardcode with the interface to get the feed value.
-
-```
-uint256 feedID = x;
-uint256 feedValue, uint256 feedLastTimeStamp, uint256 feedDecimals = IOpenOracleFramework(0x00f0feed50dcdf57b4f1b532e8f5e7f291e0c84b).getFeed(feedID);
-```
-
-You can now use the feed value as needed.&#x20;
-
-
-
-Note that `feedValue / feedDecimals`
-
-Should be used for the real value represented by the front end.
+###
