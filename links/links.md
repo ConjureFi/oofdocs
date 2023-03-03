@@ -2,7 +2,10 @@
 
 **Site**
 
-[https://Scry.Finance](https://scry.finance)
+{% embed url="https://scry.finance" %}
+
+**Front End**\
+****[https://dapp.Scry.Finance](https://scry.finance)
 
 **Twitter**
 
@@ -16,6 +19,6 @@
 
 [https://github.com/Scryprotocol](https://github.com/Scryprotocol)
 
-Discord
+**Discord**
 
 [https://discord.gg/3Z2qvm9BDg](https://discord.gg/3Z2qvm9BDg)
