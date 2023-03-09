@@ -1,21 +1,107 @@
 # Use
 
+
+
 ### Interface
 
 ```solidity
 interface Morpheus {
+   
+    function getFeed(uint256 feedID)
+        external
+        view
+        returns (
+            uint256 value,
+            uint256 decimals,
+            uint256 timestamp
+        );
+
+    function getFeeds(uint256[] memory feedIDs)
+        external
+        view
+        returns (
+            uint256[] memory value,
+            uint256[] memory decimals,
+            uint256[] memory timestamp,
+            string[] memory APIendpoint,
+            string[] memory APIpath
+        );
+
     function requestFeeds(
         string[] calldata APIendpoint,
         string[] calldata APIendpointPath,
         uint256[] calldata decimals,
         uint256[] calldata bounties
     ) external payable returns (uint256[] memory feeds);
+    
      function supportFeeds(
         uint256[] calldata feedIds,
         uint256[] calldata values
     ) external payable;
 }
 ```
+
+The Morpheus interface is a smart contract interface that defines the functions required for fetching, retrieving and supporting feed data in a decentralized manner.
+
+#### Functions
+
+**`getFeed(uint256 feedID)`**
+
+This function retrieves the value, decimals, and timestamp of a single feed.
+
+**Parameters**
+
+* `feedID` (uint256): The unique identifier of the feed request.
+
+**Returns**
+
+* `value` (uint256): The value of the feed.
+* `decimals` (uint256): The number of decimal places for the feed value.
+* `timestamp` (uint256): The timestamp of the feed value.
+
+**`getFeeds(uint256[] memory feedIDs)`**
+
+This function retrieves the value, decimals, timestamp, API endpoint and API path of multiple feeds.
+
+**Parameters**
+
+* `feedIDs` (uint256\[]): An array of unique identifiers of the feeds.
+
+**Returns**
+
+* `value` (uint256\[]): An array of feed values.
+* `decimals` (uint256\[]): An array of the number of decimal places for the feed values.
+* `timestamp` (uint256\[]): An array of the timestamps of the feed values.
+* `APIendpoint` (string\[]): An array of API endpoints for the feeds.
+* `APIpath` (string\[]): An array of API paths for the feeds.
+
+**`requestFeeds(string[] calldata APIendpoint, string[] calldata APIendpointPath, uint256[] calldata decimals, uint256[] calldata bounties)`**
+
+This function is used to request new feed data by specifying the API endpoint, API endpoint path, decimals and a bounty.
+
+**Parameters**
+
+* `APIendpoint` (string\[]): An array of API endpoints for the feeds.
+* `APIpath` (string\[]): An array of API paths for the feeds.
+* `decimals` (uint256\[]): An array of the number of decimal places for the feed values.
+* `bounties` (uint256\[]): An array of bounties offered for providing the feed values in wei.
+
+**Returns**
+
+* `feeds` (uint256\[]): An array of unique identifiers assigned to the requested feeds.
+
+**`supportFeeds(uint256[] calldata feedIds, uint256[] calldata values)`**
+
+This function is used to support feed data by specifying the feed ID and value.
+
+**Parameters**
+
+* `feedIds` (uint256\[]): An array of unique identifiers of the feeds to support.
+* `values` (uint256\[]): An array of values to support for the corresponding feed IDs.
+
+**Returns**
+
+This function does not return any values.
 
 ## Requesting API through Morpheus
 
