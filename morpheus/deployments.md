@@ -2,7 +2,7 @@
 
 ### Goerli
 
-* [Morpheus](https://goerli.etherscan.org/address/0x23ce3430110275eDcE62E759A4089F0A08A74bEA#writeContract)
+* [Morpheus](https://goerli.etherscan.io/address/0x00FA498eD77F0eeb55acD56E1b869cbC405972a1)
 
 ### Optimism
 
@@ -10,7 +10,17 @@
 
 ### Base
 
-* [Morpheus\
-  ](https://goerli.basescan.org/address/0xb064A415E6414956ff28B49fd3bD6ed6d703C4E4#writeContract)
+* [Morpheus](https://goerli.basescan.org/address/0xb064A415E6414956ff28B49fd3bD6ed6d703C4E4#writeContract)
+
+### Arbitrum
+
+* [Morpheus](https://arbiscan.io/address/0xE565f05422481345b5Fad564DD9Ab7B0cE3Ec017)
+
+### Canto
+
+* 0x6F84AcBE261cDd0dC39E00d3F39A2d4bFE756441
+
+[\
+](https://goerli.basescan.org/address/0xb064A415E6414956ff28B49fd3bD6ed6d703C4E4#writeContract)
 
 ###

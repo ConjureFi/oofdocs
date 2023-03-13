@@ -45,7 +45,7 @@ The Morpheus interface is a smart contract interface that defines the functions 
 
 #### Functions
 
-**`getFeed(uint256 feedID)`**
+### **`getFeed(uint256 feedID)`**
 
 This function retrieves the value, decimals, and timestamp of a single feed.
 
@@ -75,7 +75,7 @@ This function retrieves the value, decimals, timestamp, API endpoint and API pat
 * `APIendpoint` (string\[]): An array of API endpoints for the feeds.
 * `APIpath` (string\[]): An array of API paths for the feeds.
 
-**`requestFeeds(string[] calldata APIendpoint, string[] calldata APIendpointPath, uint256[] calldata decimals, uint256[] calldata bounties)`**
+### **`requestFeeds(string[] calldata APIendpoint, string[] calldata APIendpointPath, uint256[] calldata decimals, uint256[] calldata bounties)`**
 
 This function is used to request new feed data by specifying the API endpoint, API endpoint path, decimals and a bounty.
 
@@ -102,6 +102,22 @@ This function is used to support feed data by specifying the feed ID and value.
 **Returns**
 
 This function does not return any values.
+
+getFeeds()
+
+Description: This function is used to get the latest values of multiple feeds from the Morpheus oracle. It takes an array of feed IDs as input and returns an array of corresponding values, decimals, timestamps, API endpoints, and API paths.
+
+Parameters:
+
+* feedIDs (uint256\[] memory): An array of feed IDs to retrieve values for.
+
+Returns:
+
+* value (uint256\[] memory): An array of the latest values of the feeds corresponding to the provided feed IDs.
+* decimals (uint256\[] memory): An array of the number of decimal places for the values of the feeds corresponding to the provided feed IDs.
+* timestamp (uint256\[] memory): An array of the Unix timestamps (in seconds) of the latest updates for the feeds corresponding to the provided feed IDs.
+* APIendpoint (string\[] memory): An array of the API endpoints used to retrieve the values of the feeds corresponding to the provided feed IDs.
+* APIpath (string\[] memory): An array of the API paths used to retrieve the values of the feeds corresponding to the provided feed IDs.
 
 ## Requesting API through Morpheus
 
@@ -134,6 +150,24 @@ uint256[] memory feeds = morpheus.requestFeeds{value: 20000000000000000}(apiEndp
 In the code above, `morpheusAddress` is the address of the Morpheus contract. The `requestFeeds` function is called with the provided input, and 0.02 ETH is sent with the transaction. The return value is an array of feed IDs.
 
 Note that you need to send enough ETH for the request for gas. If there's not enough bounty to make the transaction net 0 cost for the node, it won't be picked up.
+
+### VRF
+
+You can `requestFeeds` with VRF by putting 'vrf' as the enpoint as the salt you want to use with the VRF as the path. The return will be a 256b uint.
+
+```solidity
+
+uint256[] memory feedIds = morpheus.requestFeeds{value: .01 ether}(
+    ["vrf"],
+    ["LOL"],
+    [0],
+    [.01 ether]
+);
+//feedIds[0]
+//9879752290979272170120564511694725973244445080113496454172745156547599793834
+```
+
+1 ID with VRF 9879752290979272170120564511694725973244445080113496454172745156547599793834
 
 ### Updating a feed
 

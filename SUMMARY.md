@@ -14,6 +14,7 @@
 
 * [Morpehus](morpheus/morpehus.md)
 * [Use](morpheus/use.md)
+* [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments](morpheus/deployments.md)
 
 ## Scry NFTs and Licenses
