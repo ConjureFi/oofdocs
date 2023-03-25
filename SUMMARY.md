@@ -13,6 +13,7 @@
 ## Morpheus
 
 * [Morpehus](morpheus/morpehus.md)
+* [Build Your Own Oracle](morpheus/build-your-own-oracle.md)
 * [Use](morpheus/use.md)
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments](morpheus/deployments.md)
