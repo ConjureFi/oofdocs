@@ -153,7 +153,7 @@ Note that you need to send enough ETH for the request for gas. If there's not en
 
 ### VRF
 
-You can `requestFeeds` with VRF by putting 'vrf' as the enpoint as the salt you want to use with the VRF as the path. The return will be a 256b uint.
+You can `requestFeeds` with VRF by putting 'vrf' as the enpoint as the salt you want to use as the path. The return will be a 256b uint.
 
 ```solidity
 
@@ -167,7 +167,7 @@ uint256[] memory feedIds = morpheus.requestFeeds{value: .01 ether}(
 //9879752290979272170120564511694725973244445080113496454172745156547599793834
 ```
 
-1 ID with VRF 9879752290979272170120564511694725973244445080113496454172745156547599793834
+0 ID with VRF 9879752290979272170120564511694725973244445080113496454172745156547599793834
 
 ### Updating a feed
 

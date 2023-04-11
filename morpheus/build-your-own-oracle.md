@@ -1,27 +1,54 @@
 # Build Your Own Oracle
 
-Welcome to the Scry deployment guide. This guide will take you through the simple process for oracle deployment to any EVM, with custom signers, and API endpoints and high scale oracle feeds. These oracles are fully self deployable and decentralized with you hosting your own nodes.
+**Introduction**
 
-As you can see Scry allows for high scale data, giving you access to whatever data you need when you need it.
+Welcome to the Scry deployment guide. This comprehensive guide will walk you through the process of oracle deployment on any EVM network, complete with custom signers, API endpoints, and high-scale oracle feeds. Scry oracles are fully self-deployable, decentralized, and allow you to host your own nodes.
 
-Scry also pioneers Morpheus a framework that allows developers to request any API from web2, directly onchain for their web3 apps in realtime. This tool enables real-time data requests, any API and data to be used, and can be used on any EVM network. Morpheus has been designed to make it easier for developers to build decentralized applications that can interact with the real world, thereby bridging the gap between web2 and web3.
+**Scry and Morpheus**
 
-Morpheus nodes, which are self hostable oracles, are a key component of the Scry ecosystem.
+Scry enables high-scale data access, providing you with the data you need when you need it. Scry also introduces Morpheus, a framework that allows developers to request any API from web2 directly on-chain for their web3 apps in real-time. Morpheus makes it easier for developers to build decentralized applications that interact with the real world, bridging the gap between web2 and web3.
 
-Morpheus nodes earn fees from bounty requests for data. When developers need a feed update, they request the endpoint and attach a fee in the native chain's asset for gas. This allows nodes to be fully autonomous, refueling themselves from their own fees, and create passive revenue.
+**Morpheus Nodes**
 
-By enabling anyone to fill requests for data, Scry allows developers and projects to choose where they source their data based on reputation for who they feel will be honest, as well as even source the data from their own community.
+Morpheus nodes, self-hostable oracles, are a key component of the Scry ecosystem. They earn fees from bounty requests for data, enabling nodes to be fully autonomous and create passive revenue. Scry allows developers and projects to choose their data sources based on reputation and even source data from their own community.
 
-To start, make sure to check out our docs. Once ready go to the deployments in the docs to find your factory. If your network is not supported you can fork from the github repo. You can also use createmorph.js just run it in step 3 rather than init.js and itll deploy your oracle aswell
+**Preparation**
 
-We will be using goerli to demo, but you can use any EVM, just use your preferred deployment framework and once you have your contract address, you can continue. You have 2 options you can either use etherscan to easily initialize the oracle. You can also do it directly using our scripts.
+Before starting, familiarize yourself with Scry's documentation. Go to the deployments section in the docs to find your factory. If your network is unsupported, fork the GitHub repository\
+[https://github.com/ScryProtocol/contracts](https://github.com/ScryProtocol/contracts)\
+&#x20;and use your preferred framework. For deploying your oracle  , you can use `createMorph.js` in step 3 instead of `initialize.js`.
 
-Step 1. To start clone into the repo at github.com/scryprotocol/NodeDeploy. Then npm install. Once ready go to the .env and set up your oracle.
+**Deployment Steps**
 
-Start with the RPC, you can use any RPC for any EVM network that your contracts been deployed to. Here we are using gorli. OOF Address for the oracle address you deployed. PK would be for your private key for your signer for the oracle. Then go into init.js and change the signers to the address for your private key.
+_Step 1: Clone the repository and install dependencies_
 
-Step 3. Once ready go back to your environment and run node init.js. The script will setup your oracle for you.
+1. Clone the repo from github.com/scryprotocol/NodeDeploy.
+2. Run `npm install` to install necessary dependencies.
 
-Step 4. You're now ready to run your node, run node morpheus dot j s and you're all done, you can simply use the script on an AWS EC2 free vps or you can host it locally. Your node will automatically run and update all feeds for you and earn fees.
+_Step 2: Set up your oracle in the .env file_
 
-If you need support just hop in our discord or come chat if you like what we've built. Find links on scry dot finance. Cheers.
+`RPC=https://rpc.sepolia.org`
+
+`OOFAddress=`
+
+`PK=`
+
+1. Set up the RPC for any EVM network where your contract is deployed (e.g., Goerli).
+2. Set the OOFAddress to the oracle address you deployed.
+3. Set the PK to your private key for your oracle signer.
+4. In `initialize.js`, change the signers to the address for your private key.
+
+_Step 3: Initialize the oracle_
+
+1. In your environment, run `node initialize.js` to set up your oracle. You can skip this if you used createMorph.js to deploy the contract.
+
+_Step 4: Run your Morpheus node_
+
+1. Run `node morpheus.js` to start your node.
+2. Host your node on an AWS EC2 free VPS or locally. Your node will automatically run, update all feeds, and earn fees.
+
+**Support**
+
+For support, join the Scry Discord or visit scry.finance to chat and learn more about the project.
+
+Happy deploying!
