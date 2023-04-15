@@ -1,6 +1,6 @@
 # Subscription Based Models
 
-Oracles can choose from 3 different models, which allows them to create feeds which are public and permissioned. Feed models are at a feed level, not oracle level, so a single contract can have many feeds, some public, some subscription and some pass; \
+Oracles can choose from 3 different models, which allows them to create feeds which are public and permissioned. Feed models are at a feed level, not oracle level, so a single contract can have many feeds, some public, some subscription and some pass;\
 \
 **Donation**\
 The first model is the donation based support model, where users can just send Oracles some ETH as a thankyou for running the feeds, and can choose which feeds they want to support specifically. This allows for feeds to be public and lets oracles have analytics for which feeds are being supported at a feed level

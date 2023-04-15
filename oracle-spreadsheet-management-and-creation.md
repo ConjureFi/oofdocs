@@ -53,7 +53,7 @@ To set up your Spreadsheet for Scry Node, simply copy this template or use as a 
 **SHEETTITLE=** The TITLE for the specific sheet - **Polygon**\
 **SHEETAPI=**API KEY
 
-<figure><img src="../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
 
 **New Feeds**\
 1\. Simply put new Feeds into the sheet with ID and needed info for the APIs, run setup.js and then restart your node.

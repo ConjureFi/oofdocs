@@ -12,14 +12,14 @@
 
 ## Open Oracle Framework
 
-* [Subscription Based Models](open-oracle-framework/subscription-based-models.md)
-* [Data Feeds for Historical Tracking](open-oracle-framework/data-feeds-for-historical-tracking.md)
-* [Time Weighted Average Price using OOF](open-oracle-framework/time-weighted-average-price-using-oof.md)
-* [Feed Requests](open-oracle-framework/feed-requests.md)
-* [Oracle Spreadsheet Management and Creation](open-oracle-framework/oracle-spreadsheet-management-and-creation.md)
-* [Oracle Creation](open-oracle-framework/oracle-creation.md)
-* [Oracle Management](open-oracle-framework/oracle-management.md)
-* [Front End](open-oracle-framework/front-end.md)
+* [Subscription Based Models](subscription-based-models.md)
+* [Data Feeds for Historical Tracking](data-feeds-for-historical-tracking.md)
+* [Time Weighted Average Price using OOF](time-weighted-average-price-using-oof.md)
+* [Feed Requests](feed-requests.md)
+* [Oracle Spreadsheet Management and Creation](oracle-spreadsheet-management-and-creation.md)
+* [Oracle Creation](oracle-creation.md)
+* [Oracle Management](oracle-management.md)
+* [Front End](front-end.md)
 
 ## Scry NFTs and Licenses
 

@@ -17,4 +17,3 @@ Funds that have been donated/paid to the oracle can be withdraw to either a desi
 * 4 updatePayoutAddress(addressValue)
 * 5 updateRevenueMode(feedId, uintValue)
 * 6 updateFeedCost(feedId, uintValue)
-

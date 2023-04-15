@@ -12,6 +12,8 @@ Scry enables high-scale data access, providing you with the data you need when y
 
 Morpheus nodes, self-hostable oracles, are a key component of the Scry ecosystem. They earn fees from bounty requests for data, enabling nodes to be fully autonomous and create passive revenue. Scry allows developers and projects to choose their data sources based on reputation and even source data from their own community.
 
+## For Developers
+
 **Preparation**
 
 Before starting, familiarize yourself with Scry's documentation. Go to the deployments section in the docs to find your factory. If your network is unsupported, fork the GitHub repository\
@@ -46,6 +48,58 @@ _Step 4: Run your Morpheus node_
 
 1. Run `node morpheus.js` to start your node.
 2. Host your node on an AWS EC2 free VPS or locally. Your node will automatically run, update all feeds, and earn fees.
+
+## For Non-Technical Users
+
+### Features
+
+* Deploy your own autonomous oracle infrastructure to ANY EVM network in <60s.
+* Support any API endpoint in realtime, allowing requests to be made fully onchain to the oracle fully permissionlessly
+* Earn fees from requests for data, only filling requests if profitable
+* 1 click deployment and setup. No need for any prereqs just launch out of the box ready to use. No developer experience or technical experience needed.
+* Fully custom VRF and proof system with cryptographically secure 256b Hash RanCh VRFs
+
+1. Download the binary
+
+Linux [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip)
+
+MacOS [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-macos.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-macos.zip)
+
+Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-win.exe.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-win.exe.zip)
+
+### Usage
+
+Simply download the binaries. Put your private key for your oracle signer in the .env and use run the node to deploy. If using the binaries
+
+.env
+
+RPC=[https://rpc.sepolia.org](https://rpc.sepolia.org/)
+
+OOFAddress=
+
+PK=
+
+Set the RPC for any EVM network where your contract is deployed (Goerli).&#x20;
+
+OPTIONAL - Set the OOFAddress to the oracle address you deployed.
+
+Set the PK to your private key for your oracle signer.
+
+For those using the non dev binaries use your prefered terminal such as cmd on windows. Then go to the binary location and do morpheus.exe or just run it as usual like any other app.
+
+Oracles will automatically be deployed, setup and then run autonomously. Make sure to give a little in tokens for gas like ETH. Oracles will refill based on requests.
+
+## Params OPTIONAL
+
+\-a Used to set the oracle address if already deployed&#x20;
+
+\-r Used to set the RPC for an EVM network&#x20;
+
+\-pk Used to set the PK used for the oracle signer and deployment
+
+Sample
+
+`morpheus -a 0x00f0000000F11a5380Da5A184F0C563B5995fee2 -r https://sepolia.infura.io/v3/6822e4e6edc847829086404ffe6d5b2b -pk 0000000000000000000000000000000000000000000000000000000000`
 
 **Support**
 
