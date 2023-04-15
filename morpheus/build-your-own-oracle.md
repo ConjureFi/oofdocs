@@ -69,7 +69,7 @@ Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-win.exe.zip
 
 ### Usage
 
-Simply download the binaries. Put your private key for your oracle signer in the .env and use run the node to deploy. If using the binaries
+Simply download the binaries. Put your private key for your oracle signer in the .env and run the node to deploy.
 
 .env
 
