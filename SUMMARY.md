@@ -1,14 +1,6 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Subscription Based Models](subscription-based-models.md)
-* [Data Feeds for Historical Tracking](data-feeds-for-historical-tracking.md)
-* [Oracle Spreadsheet Management and Creation](oracle-spreadsheet-management-and-creation.md)
-* [Oracle Creation](oracle-creation.md)
-* [Front End](front-end.md)
-* [Oracle Management](oracle-management.md)
-* [Time Weighted Average Price using OOF](time-weighted-average-price-using-oof.md)
-* [Feed Requests](feed-requests.md)
 
 ## Morpheus
 
@@ -18,15 +10,22 @@
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments](morpheus/deployments.md)
 
+## Open Oracle Framework
+
+* [Subscription Based Models](open-oracle-framework/subscription-based-models.md)
+* [Data Feeds for Historical Tracking](open-oracle-framework/data-feeds-for-historical-tracking.md)
+* [Time Weighted Average Price using OOF](open-oracle-framework/time-weighted-average-price-using-oof.md)
+* [Feed Requests](open-oracle-framework/feed-requests.md)
+* [Oracle Spreadsheet Management and Creation](open-oracle-framework/oracle-spreadsheet-management-and-creation.md)
+* [Oracle Creation](open-oracle-framework/oracle-creation.md)
+* [Oracle Management](open-oracle-framework/oracle-management.md)
+* [Front End](open-oracle-framework/front-end.md)
+
 ## Scry NFTs and Licenses
 
 * [Scry NFT Token](scry-nfts-and-licenses/scry-nft-token.md)
 * [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
 * [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
-
-***
-
-* [Permissionless Data Requests and Data Providers](permissionless-data-requests-and-data-providers.md)
 
 ## SMART CONTRACTS
 

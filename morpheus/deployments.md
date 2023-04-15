@@ -4,6 +4,10 @@
 
 * [Morpheus](https://goerli.etherscan.io/address/0x00FA498eD77F0eeb55acD56E1b869cbC405972a1)
 
+### Sepolia
+
+* [Morpheus](https://sepolia.etherscan.io/address/0x927ba066081d016184a7D74Ba231d3Ce13B10D32)
+
 ### Optimism
 
 * [Morpheus](https://optimistic.etherscan.io/address/0x7F3dB2C9D4A52D78C4eEAECe4CDD5dc32Ab5d433#writeContract)

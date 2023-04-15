@@ -5,7 +5,7 @@
 {% embed url="https://scry.finance" %}
 
 **Front End**\
-****[https://dapp.Scry.Finance](https://scry.finance)
+[https://dapp.Scry.Finance](https://scry.finance)
 
 **Twitter**
 

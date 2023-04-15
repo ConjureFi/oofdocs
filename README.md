@@ -8,11 +8,15 @@ Scry is an open source, permissionless, flexible and robust framework for Oracle
 
 **The Uniswap of Data**
 
-Open Oracle Framework’s a framework for permissionless oracle deployment and robust and flexible on-chain oracle feeds. Oracles are simply multi-party median value feeds, but you can even implement your own price logic through a dedicated proxy owner, which itself has it’s own price logic. The median value model takes the value for n signers, uses the median value submitted, makes sure that m signers for the m/n threshold has been met and returns the value. The oracle can require a small fee for subscriptions to feeds to cover gas fees, and are able to provide many feeds from 1 contract, allowing for highly efficient, scalable feed submission and retrieval.
+In the world of blockchain and decentralized systems, data is a critical component that is needed to execute smart contracts, enable dApps, and facilitate transactions. However, the problem with the current approach to data is that it is centralized even while most pretend to be decentralized, which goes against the very ethos of decentralization. This is where Data LPs and free market approaches come in.
+
+One of the biggest issues with data and oracle infrastructure in crypto is that it is monopolized by players like Chainlink, and all alternatives suffer from the same closed systems for data through set signers or a single token as the core security. This results in a centralized approach to data, which goes against the very ethos of decentralization.
+
+Data LPs (Data Liquidity Providers) are essentially decentralized marketplaces for data. They provide a way for developers to source data from a variety of different sources, while also providing incentives for individuals and entities to contribute their data to the marketplace. In a Data LP, anyone can contribute their data and earn rewards for doing so. Developers can then purchase the data they need from the signers they choose. Scry is a pioneering a decentralized and open market data approach with Morpheus that allows anyone to easily set up and operate their own oracle and node with no technical expertise.
+
+By enabling anyone to fill requests for data, Scry allows developers and projects to choose where they source their data based on reputation for who they feel will be honest, as well as even source the data from their own community.
 
 Oracles are able to be self-deployed by developers with their own signers securing the feeds with own nodes, allowing fully decentralized deployment and data, while allowing projects to deploy in realtime as they need feeds by simply updating their source sheet.
-
-These oracles are able to do >250 feeds with 1 tx, can be deployed in <15m and are fully compatible with any EVM network, with custom APIs.
 
 **Flexibilty**\
 By allowing people to easily bootstrap feeds using multiple members, users can create decentralized oracle feeds for whatever they want, this is especially important for L2s where gas fees are low and so large signer sets and feeds can be created for realtime price sources. A simple node that queries many apis, submits them and then returns the med value on request allows for rapid and scalable deployment for Synthetic Assets, as anyone can just set up a node or set the feed to be sourced from a gnosis, letting the logic be based on an api or general agreement.
@@ -21,7 +25,7 @@ By allowing people to easily bootstrap feeds using multiple members, users can c
 Oracles can have a single feed or have 1 contract and submit many feeds/prices available, allowing submitFeed(uint\[] feedIDs, uint\[] values) to save gas for large feed sets. This allows large players to easily submit multiple feeds with 1 call and not need to manage multiple transactions/calls to multiple contracts.
 
 **Monetization and Incentives**\
-Because oracles have upkeep costs, the oracles can charge a small fee in ETH for subscriptions. This way they can deploy many feeds as long as they are worth the upkeep, and because we compact many feed updates into single calls, efficiency couldn’t be better. Users can then shop around for the best feed or can choose based on price, depending on risk tolerance. This creates an open oracle marketplace and revenue model and allows projects to quickly bootstrap feeds they need from providers. Oracles can then price their feeds based on upkeep and cost as well as deprecate unused feeds.
+Because oracles have upkeep costs, the oracles can charge a small fee in ETH. This way they can deploy many feeds as long as they are worth the upkeep, and because we compact many feed updates into single calls, efficiency couldn’t be better. Users can then shop around for the best feed or can choose based on price, depending on risk tolerance. This creates an open oracle marketplace and revenue model and allows projects to quickly bootstrap feeds they need from providers. Oracles can then price their feeds based on upkeep and cost as well as deprecate unused feeds.
 
 **Containerization**\
 Oracles are created as single contracts which are owned by the oracle parties that submit feeds, these oracles then create an id for every feed they want to create, which allows for users to explore feeds offered by an oracle and select based on id, while having each oracle be completely contained, such that bad oracles do not affect good oracles and users can choose providers that are good for them.
