@@ -6,7 +6,7 @@
 
 * [Morpehus](morpheus/morpehus.md)
 * [Build Your Own Oracle](morpheus/build-your-own-oracle.md)
-* [Use / Request Feeds](morpheus/use-request-feeds.md)
+* [Use / Request Feeds](morpheus/use.md)
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments](morpheus/deployments.md)
 

@@ -1,4 +1,4 @@
-# Use
+# Use / Request Feeds
 
 Developers can implement the Morpheus interface in their smart contracts to enable fetching, retrieving and supporting feed data in a decentralized manner. The interface allows developers to specify the API endpoint, API endpoint path, decimals, and bounties when requesting new feed data, and to support feed data by specifying the feed ID and value.
 
@@ -153,7 +153,7 @@ Note that you need to send enough ETH for the request for gas. If there's not en
 
 ### VRF
 
-You can `requestFeeds` with VRF by putting 'vrf' as the enpoint as the salt you want to use as the path. The return will be a 256b uint.
+You can `requestFeeds` with VRF by putting 'vrf' as the enpoint the salt you want to use as the path. The return will be a 256b uint.
 
 ```solidity
 
