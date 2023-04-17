@@ -63,9 +63,9 @@ _Step 4: Run your Morpheus node_
 
 Linux [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip)
 
-MacOS [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-macos.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-macos.zip)
+MacOS [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-mac.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-mac.zip)
 
-Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-win.exe.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-win.exe.zip)
+Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.exe.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.zip)
 
 ### Usage
 
