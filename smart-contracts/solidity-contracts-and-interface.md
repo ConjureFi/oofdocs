@@ -67,14 +67,13 @@ interface IOpenOracleFramework {
 
 Take feedID in the fn params or hardcode with the interface to get the feed value.
 
-```solidity
-uint256 feedID = x;
-uint256 feedValue, uint256 feedLastTimeStamp, uint256 feedDecimals = IOpenOracleFramework(0x00f0feed50dcdf57b4f1b532e8f5e7f291e0c84b).getFeed(feedID);
-uint256 feedValue =feedValue/10**feedDecimals;
+<pre class="language-solidity"><code class="lang-solidity">uint256 feedID = x;
+<strong>uint256 feedValue, uint256 feedLastTimeStamp, uint256 feedDecimals = IOpenOracleFramework(0x00f0feed50dcdf57b4f1b532e8f5e7f291e0c84b).getFeed(feedID);
+</strong>uint256 feedValue =feedValue/10**feedDecimals;
 
 ;
 
-```
+</code></pre>
 
 You can now use the feed value as needed.
 

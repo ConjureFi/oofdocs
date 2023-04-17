@@ -136,9 +136,10 @@ To request an API through Morpheus, you need to call the function `requestFeeds(
 * `decimals`: This is the number of decimals that you want to use for the API response. You need to pass it as an array of uint256 values.
 * `bounties`: This is the bounty amount that you want to pay for the API request. You need to pass it as an array of uint256 values.
 
-To use it with the sample input you provided, you would call the function like this:
+To request it with the sample input you provided, you would call the function like this:
 
 ```solidity
+//request
 Morpheus morpheus = Morpheus(morpheusAddress);
 string[] memory apiEndpoint = ['https://api.exchangerate.host/latest'];
 string[] memory apiEndpointPath = ['rates,JPY'];
@@ -147,7 +148,21 @@ uint256[] memory bounties = [20000000000000000];
 uint256[] memory feeds = morpheus.requestFeeds{value: 20000000000000000}(apiEndpoint, apiEndpointPath, decimals, bounties);
 ```
 
-In the code above, `morpheusAddress` is the address of the Morpheus contract. The `requestFeeds` function is called with the provided input, and 0.02 ETH is sent with the transaction. The return value is an array of feed IDs.
+Take feedID in the fn params or hardcode with the interface to get the feed value.
+
+<pre class="language-solidity"><code class="lang-solidity">uint256[] memory feeds = x;
+<strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,, = morpheus.getFeeds(feeds);
+</strong><strong>for(uint n;n&#x3C;feeds.length;n++){
+</strong><strong>feedValue[n] = feedValues[n]/10**feedDecimals[n];
+</strong>}
+
+</code></pre>
+
+You can now use the feed value as needed.
+
+Note that `feedValue / 10**feedDecimals`
+
+Should be used for the real value represented by the front end. In the code above, `morpheusAddress` is the address of the Morpheus contract. The `requestFeeds` function is called with the provided input, and 0.02 ETH is sent with the transaction. The return value is an array of feed IDs.
 
 Note that you need to send enough ETH for the request for gas. If there's not enough bounty to make the transaction net 0 cost for the node, it won't be picked up.
 
