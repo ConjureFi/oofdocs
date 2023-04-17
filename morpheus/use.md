@@ -136,7 +136,7 @@ To request an API through Morpheus, you need to call the function `requestFeeds(
 * `decimals`: This is the number of decimals that you want to use for the API response. You need to pass it as an array of uint256 values.
 * `bounties`: This is the bounty amount that you want to pay for the API request. You need to pass it as an array of uint256 values.
 
-To request it with the sample input you provided, you would call the function like this:
+To request it with the sample input, you would call the function like this:
 
 ```solidity
 //request

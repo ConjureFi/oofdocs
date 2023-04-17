@@ -4,7 +4,7 @@ description: >-
   Web2 Data to Web3
 ---
 
-# Morpehus
+# Morpheus
 
 Morpheus is a framework that allows developers to request any API from web2, directly onchain for their web3 apps. This tool enables real-time data requests, any API and data to be used, and can be used on any EVM network. Morpheus has been designed to make it easier for developers to build decentralized applications that can interact with the real world, thereby bridging the gap between web2 and web3.
 
