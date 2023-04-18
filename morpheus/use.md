@@ -150,8 +150,8 @@ uint256[] memory feeds = morpheus.requestFeeds{value: 20000000000000000}(apiEndp
 
 Take feedID in the fn params or hardcode with the interface to get the feed value.
 
-<pre class="language-solidity"><code class="lang-solidity">uint256[] memory feeds = x;
-<strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,, = morpheus.getFeeds(feeds);
+<pre class="language-solidity"><code class="lang-solidity"><strong>uint256[] memory feeds = x;
+</strong><strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,, = morpheus.getFeeds(feeds);
 </strong><strong>for(uint n;n&#x3C;feeds.length;n++){
 </strong><strong>feedValue[n] = feedValues[n]/10**feedDecimals[n];
 </strong>}
@@ -168,7 +168,7 @@ Note that you need to send enough ETH for the request for gas. If there's not en
 
 ### VRF
 
-You can `requestFeeds` with VRF by putting 'vrf' as the enpoint the salt you want to use as the path. The return will be a 256b uint.
+You can `requestFeeds` with VRF by putting 'vrf' as the enpoint the salt you want to use as the path. The val will be a 256b uint.
 
 ```solidity
 
@@ -178,7 +178,21 @@ uint256[] memory feedIds = morpheus.requestFeeds{value: .01 ether}(
     [0],
     [.01 ether]
 );
-//feedIds[0]
+//feedIds[0] after request filled
+//9879752290979272170120564511694725973244445080113496454172745156547599793834
+```
+
+0 ID with VRF&#x20;
+
+```solidity
+
+uint256[] memory feeds = feedIds;
+uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,, = morpheus.getFeeds(feeds);
+for(uint n;n<feeds.length;n++){
+feedValue[n] = feedValues[n]/10**feedDecimals[n];
+}
+
+//feedIds[0] after request filled
 //9879752290979272170120564511694725973244445080113496454172745156547599793834
 ```
 
