@@ -139,13 +139,22 @@ To request an API through Morpheus, you need to call the function `requestFeeds(
 To request it with the sample input, you would call the function like this:
 
 ```solidity
-//request
 Morpheus morpheus = Morpheus(morpheusAddress);
-string[] memory apiEndpoint = ['https://api.exchangerate.host/latest'];
-string[] memory apiEndpointPath = ['rates,JPY'];
-uint256[] memory decimals = [2];
-uint256[] memory bounties = [20000000000000000];
+
+string[] memory apiEndpoint = new string[](1);
+apiEndpoint[0] = "https://api.exchangerate.host/latest";
+
+string[] memory apiEndpointPath = new string[](1);
+apiEndpointPath[0] = "rates,JPY";
+
+uint256[] memory decimals = new uint256[](1);
+decimals[0] = 2;
+
+uint256[] memory bounties = new uint256[](1);
+bounties[0] = 20000000000000000;
+
 uint256[] memory feeds = morpheus.requestFeeds{value: 20000000000000000}(apiEndpoint, apiEndpointPath, decimals, bounties);
+
 ```
 
 Take feedID in the fn params or hardcode with the interface to get the feed value.
