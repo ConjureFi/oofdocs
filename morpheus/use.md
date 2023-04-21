@@ -180,30 +180,36 @@ Note that you need to send enough ETH for the request for gas. If there's not en
 You can `requestFeeds` with VRF by putting 'vrf' as the enpoint the salt you want to use as the path. The val will be a 256b uint.
 
 ```solidity
+Morpheus morpheus = Morpheus(morpheusAddress);
 
-uint256[] memory feedIds = morpheus.requestFeeds{value: .01 ether}(
-    ["vrf"],
-    ["LOL"],
-    [0],
-    [.01 ether]
-);
-//feedIds[0] after request filled
-//9879752290979272170120564511694725973244445080113496454172745156547599793834
+string[] memory apiEndpoint = new string[](1);
+apiEndpoint[0] = "vrf";
+
+string[] memory apiEndpointPath = new string[](1);
+apiEndpointPath[0] = "yoursalthere";
+
+uint256[] memory decimals = new uint256[](1);
+decimals[0] = 0;
+
+uint256[] memory bounties = new uint256[](1);
+bounties[0] = 10000000000000000;
+
+uint256[] memory feeds = morpheus.requestFeeds{value: 10000000000000000}(apiEndpoint, apiEndpointPath, decimals, bounties);
+
 ```
 
 0 ID with VRF&#x20;
 
-```solidity
-
-uint256[] memory feeds = feedIds;
-uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,, = morpheus.getFeeds(feeds);
-for(uint n;n<feeds.length;n++){
-feedValue[n] = feedValues[n]/10**feedDecimals[n];
-}
+<pre class="language-solidity"><code class="lang-solidity"> uint256[] memory times = new uint256[](1);
+        uint256[] memory feedValue = new uint256[](1);
+feedValue, times,,, = morpheus.getFeeds(feeds);
+//get a val from the VRF between 1-100
+<strong>//feedValue[0] = feedValues[0]%100+1;
+</strong>
 
 //feedIds[0] after request filled
 //9879752290979272170120564511694725973244445080113496454172745156547599793834
-```
+</code></pre>
 
 0 ID with VRF 9879752290979272170120564511694725973244445080113496454172745156547599793834
 
