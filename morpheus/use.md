@@ -148,7 +148,7 @@ uint256[] memory feeds = morpheus.requestFeeds{value: 20000000000000000}(apiEndp
 Take feedID in the fn params or hardcode with the interface to get the feed value.
 
 <pre class="language-solidity"><code class="lang-solidity"><strong>uint256[] memory feeds = x;
-</strong><strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,string[] memory valStr,,, = morpheus.getFeeds(feeds);
+</strong><strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,,,string[] memory valStr = morpheus.getFeeds(feeds);
 </strong><strong>for(uint n;n&#x3C;feeds.length;n++){
 </strong><strong>feedValue[n] = feedValues[n]/10**feedDecimals[n];
 </strong>}
