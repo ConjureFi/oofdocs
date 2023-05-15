@@ -65,25 +65,27 @@ Linux [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip](ht
 
 MacOS [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-mac.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-mac.zip)
 
-Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.exe.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.zip)
+Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.zip)
 
 ### Usage
 
 Simply download the binaries. Put your private key for your oracle signer in the .env and run the node to deploy.
 
-.env
+#### .env
 
-RPC=[https://rpc.sepolia.org](https://rpc.sepolia.org/)
-
+<pre class="language-properties"><code class="lang-properties">RPC=
 OOFAddress=
-
 PK=
+<strong>OPENAI_API_KEY=
+</strong></code></pre>
 
 Set the RPC for any EVM network where your contract is deployed (Goerli).&#x20;
 
 OPTIONAL - Set the OOFAddress to the oracle address you deployed.
 
 Set the PK to your private key for your oracle signer.
+
+OPTIONAL - Set the OPENAI\_API\_KEY for chatGPT support.
 
 For those using the non dev binaries use your prefered terminal such as cmd on windows. Then go to the binary location and do morpheus.exe or just run it as usual like any other app.
 

@@ -13,7 +13,8 @@ interface Morpheus {
         returns (
             uint256 value,
             uint256 decimals,
-            uint256 timestamp
+            uint256 timestamp,
+            string valStr
         );
 
     function getFeeds(uint256[] memory feedIDs)
@@ -24,7 +25,8 @@ interface Morpheus {
             uint256[] memory decimals,
             uint256[] memory timestamp,
             string[] memory APIendpoint,
-            string[] memory APIpath
+            string[] memory APIpath,
+            string[] memory valStr,
         );
 
     function requestFeeds(
@@ -58,22 +60,7 @@ This function retrieves the value, decimals, and timestamp of a single feed.
 * `value` (uint256): The value of the feed.
 * `decimals` (uint256): The number of decimal places for the feed value.
 * `timestamp` (uint256): The timestamp of the feed value.
-
-**`getFeeds(uint256[] memory feedIDs)`**
-
-This function retrieves the value, decimals, timestamp, API endpoint and API path of multiple feeds.
-
-**Parameters**
-
-* `feedIDs` (uint256\[]): An array of unique identifiers of the feeds.
-
-**Returns**
-
-* `value` (uint256\[]): An array of feed values.
-* `decimals` (uint256\[]): An array of the number of decimal places for the feed values.
-* `timestamp` (uint256\[]): An array of the timestamps of the feed values.
-* `APIendpoint` (string\[]): An array of API endpoints for the feeds.
-* `APIpath` (string\[]): An array of API paths for the feeds.
+* valStr(string): The string value of the feed if used.
 
 ### **`requestFeeds(string[] calldata APIendpoint, string[] calldata APIendpointPath, uint256[] calldata decimals, uint256[] calldata bounties)`**
 
@@ -90,7 +77,7 @@ This function is used to request new feed data by specifying the API endpoint, A
 
 * `feeds` (uint256\[]): An array of unique identifiers assigned to the requested feeds.
 
-**`supportFeeds(uint256[] calldata feedIds, uint256[] calldata values)`**
+### **`supportFeeds(uint256[] calldata feedIds, uint256[] calldata values)`**
 
 This function is used to support feed data by specifying the feed ID and value.
 
@@ -103,7 +90,7 @@ This function is used to support feed data by specifying the feed ID and value.
 
 This function does not return any values.
 
-getFeeds()
+### **`getFeeds(uint256[] memory feedIDs)`**
 
 Description: This function is used to get the latest values of multiple feeds from the Morpheus oracle. It takes an array of feed IDs as input and returns an array of corresponding values, decimals, timestamps, API endpoints, and API paths.
 
@@ -116,6 +103,7 @@ Returns:
 * value (uint256\[] memory): An array of the latest values of the feeds corresponding to the provided feed IDs.
 * decimals (uint256\[] memory): An array of the number of decimal places for the values of the feeds corresponding to the provided feed IDs.
 * timestamp (uint256\[] memory): An array of the Unix timestamps (in seconds) of the latest updates for the feeds corresponding to the provided feed IDs.
+* valueStr(string\[] memory): An array of the latest string values of the feeds corresponding to the provided feed IDs.
 * APIendpoint (string\[] memory): An array of the API endpoints used to retrieve the values of the feeds corresponding to the provided feed IDs.
 * APIpath (string\[] memory): An array of the API paths used to retrieve the values of the feeds corresponding to the provided feed IDs.
 
@@ -127,7 +115,7 @@ To request an API through Morpheus, you need to call the function `requestFeeds(
         string[] memory APIendpoint,
         string[] memory APIendpointPath,
 <strong>        uint256[] memory decimals,
-</strong>        uint256[] memory bounties
+</strong>        uint256[] memory bounties,
     ) external payable returns (uint256[] memory feeds)
 </code></pre>
 
@@ -160,7 +148,7 @@ uint256[] memory feeds = morpheus.requestFeeds{value: 20000000000000000}(apiEndp
 Take feedID in the fn params or hardcode with the interface to get the feed value.
 
 <pre class="language-solidity"><code class="lang-solidity"><strong>uint256[] memory feeds = x;
-</strong><strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,, = morpheus.getFeeds(feeds);
+</strong><strong>uint256[] memory feedValue, uint256[] memory feedTimeStamps, uint256[] memory feedDecimals,string[] memory valStr,,, = morpheus.getFeeds(feeds);
 </strong><strong>for(uint n;n&#x3C;feeds.length;n++){
 </strong><strong>feedValue[n] = feedValues[n]/10**feedDecimals[n];
 </strong>}
@@ -202,7 +190,7 @@ uint256[] memory feeds = morpheus.requestFeeds{value: 10000000000000000}(apiEndp
 
 <pre class="language-solidity"><code class="lang-solidity"> uint256[] memory times = new uint256[](1);
         uint256[] memory feedValue = new uint256[](1);
-feedValue, times,,, = morpheus.getFeeds(feeds);
+feedValue, times,,,, = morpheus.getFeeds(feeds);
 //get a val from the VRF between 1-100
 <strong>//feedValue[0] = feedValues[0]%100+1;
 </strong>
