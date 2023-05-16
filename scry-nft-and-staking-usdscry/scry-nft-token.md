@@ -1,4 +1,4 @@
-# Scry NFT Token
+# Scry NFT
 
 ## Scry NFTs
 
@@ -6,7 +6,7 @@ Scry uses NFTs to represent membership in the protocol as well as a license to a
 
 #### Founder NFTs
 
-These NFTs act as the council to the DAO for Scry, deciding any critical decisions, changing license fees, earning revenue from licenses and represent the protocols core, as well as themselves being a lifetime license to the protocol, contracts, node and all other tools for the project.&#x20;
+These NFTs are lifetime licenses for the protocol and are there to reward those who help us in the early phases to bootstrap the ecosystem, helping deciding any critical decisions, changing license fees, earning revenue from licenses and represent the protocols core, as well as themselves being a lifetime license to the protocol, contracts, node and all other tools for the project.&#x20;
 
 #### License NFTs
 

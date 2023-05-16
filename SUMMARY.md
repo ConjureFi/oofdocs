@@ -21,11 +21,11 @@
 * [Oracle Management](oracle-management.md)
 * [Front End](front-end.md)
 
-## Scry NFTs and Licenses
+## Scry NFT and Staking $SCRY
 
-* [Scry NFT Token](scry-nfts-and-licenses/scry-nft-token.md)
-* [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
-* [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
+* [Scry NFT](scry-nft-and-staking-usdscry/scry-nft-token.md)
+* [Licensing and Perks](scry-nft-and-staking-usdscry/licensing-and-perks.md)
+* [Purchasing a License](scry-nft-and-staking-usdscry/purchasing-a-license.md)
 
 ## SMART CONTRACTS
 
