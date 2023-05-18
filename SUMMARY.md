@@ -23,9 +23,11 @@
 
 ## Scry NFT and Staking $SCRY
 
-* [Scry NFT](scry-nft-and-staking-usdscry/scry-nft-token.md)
-* [Licensing and Perks](scry-nft-and-staking-usdscry/licensing-and-perks.md)
-* [Purchasing a License](scry-nft-and-staking-usdscry/purchasing-a-license.md)
+* [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
+* [Staking](scry-nft-and-staking-usdscry/staking.md)
+* [Scry NFT](scry-nfts-and-licenses/scry-nft-token.md)
+* [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
+* [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
 
 ## SMART CONTRACTS
 
