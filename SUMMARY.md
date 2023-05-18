@@ -28,9 +28,9 @@
 * [Oracle Creation](oracle-creation.md)
 * [Oracle Management](oracle-management.md)
 * [Front End](front-end.md)
-* [Solidity Contracts and Interface](open-oracle-framework/solidity-contracts-and-interface.md)
-* [OpenOracleFramework.sol](open-oracle-framework/openoracleframework.sol.md)
-* [OOFFactory.sol](open-oracle-framework/ooffactory.sol.md)
+* [Solidity Contracts and Interface](smart-contracts/solidity-contracts-and-interface.md)
+* [OpenOracleFramework.sol](smart-contracts/openoracleframework.sol.md)
+* [OOFFactory.sol](smart-contracts/ooffactory.sol.md)
 
 ## SMART CONTRACTS
 
