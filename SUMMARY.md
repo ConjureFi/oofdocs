@@ -10,6 +10,14 @@
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments](morpheus/deployments.md)
 
+## Scry NFT and Staking $SCRY
+
+* [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
+* [Staking](scry-nft-and-staking-usdscry/staking.md)
+* [Scry NFT](scry-nfts-and-licenses/scry-nft-token.md)
+* [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
+* [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
+
 ## Open Oracle Framework
 
 * [Subscription Based Models](subscription-based-models.md)
@@ -20,20 +28,12 @@
 * [Oracle Creation](oracle-creation.md)
 * [Oracle Management](oracle-management.md)
 * [Front End](front-end.md)
-
-## Scry NFT and Staking $SCRY
-
-* [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
-* [Staking](scry-nft-and-staking-usdscry/staking.md)
-* [Scry NFT](scry-nfts-and-licenses/scry-nft-token.md)
-* [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
-* [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
+* [Solidity Contracts and Interface](open-oracle-framework/solidity-contracts-and-interface.md)
+* [OpenOracleFramework.sol](open-oracle-framework/openoracleframework.sol.md)
+* [OOFFactory.sol](open-oracle-framework/ooffactory.sol.md)
 
 ## SMART CONTRACTS
 
-* [Solidity Contracts and Interface](smart-contracts/solidity-contracts-and-interface.md)
-* [OpenOracleFramework.sol](smart-contracts/openoracleframework.sol.md)
-* [OOFFactory.sol](smart-contracts/ooffactory.sol.md)
 * [Deployments](smart-contracts/deployments.md)
 
 ## Links
