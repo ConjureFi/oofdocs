@@ -81,7 +81,7 @@ PK=
 
 Set the RPC for any EVM network where your contract is deployed (Goerli).&#x20;
 
-OPTIONAL - Set the OOFAddress to the oracle address you deployed.
+OPTIONAL - Set the OOFAddress to the oracle address you deployed. This address represents your independant oracle from your deployed contract/the contract that gets deployed by the scripts for your oracle and node. This is NOT an already deployed contract, it is fully independant and only controlled by you and your node.
 
 Set the PK to your private key for your oracle signer.
 
