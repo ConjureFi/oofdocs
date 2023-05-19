@@ -24,7 +24,7 @@ Before starting, familiarize yourself with Scry's documentation. Fork the GitHub
 
 _Step 1: Clone the repository and install dependencies_
 
-1. Clone the repo from github.com/scryprotocol/NodeDeploy.
+1. Clone the repo from github.com/scryprotocol/morpheus
 2. Run `npm install` to install necessary dependencies.
 
 _Step 2: Set up your oracle in the .env file_
@@ -61,11 +61,14 @@ _Step 4: Run your Morpheus node_
 
 1. Download the binary
 
-Linux [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-linux.zip)
+Linux\
+[morpheus-linux.zip](https://github.com/ScryProtocol/morpheus/raw/main/morpheus-linux.zip)
 
-MacOS [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-mac.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-mac.zip)
+MacOS \
+[morpheus-mac.zip](https://github.com/ScryProtocol/Morpheus/raw/main/morpheus-mac.zip)
 
-Windows [https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.zip](https://github.com/ScryProtocol/Contracts/raw/Scry/morpheus-windows.zip)
+Windows\
+[morpheus-windows.zip](https://github.com/ScryProtocol/Morpheus/raw/main/morpheus-windows.zip)
 
 ### Usage
 
@@ -80,6 +83,8 @@ PK=
 </strong></code></pre>
 
 Set the RPC for any EVM network where your contract is deployed (Goerli).&#x20;
+
+[https://chainlist.org/](https://chainlist.org/)
 
 OPTIONAL - Set the OOFAddress to the oracle address you deployed. This address represents your independant oracle from your deployed contract/the contract that gets deployed by the scripts for your oracle and node. This is NOT an already deployed contract, it is fully independant and only controlled by you and your node.
 
