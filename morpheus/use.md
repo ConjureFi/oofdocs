@@ -219,9 +219,7 @@ Note that you need to check that the timestamp is newer than the last timestamp 
 
 
 
-Sample NFT Chat with AI response contract
-
-
+### Sample NFT Chat with AI response contract
 
 ```
     function mint(address to, string calldata _tag) public payable virtual {
