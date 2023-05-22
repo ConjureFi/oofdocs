@@ -31,10 +31,11 @@
 * [Solidity Contracts and Interface](smart-contracts/solidity-contracts-and-interface.md)
 * [OpenOracleFramework.sol](smart-contracts/openoracleframework.sol.md)
 * [OOFFactory.sol](smart-contracts/ooffactory.sol.md)
+* [Deployments](open-oracle-framework/deployments.md)
 
 ## SMART CONTRACTS
 
-* [Deployments](smart-contracts/deployments.md)
+* [Smart Contracts](smart-contracts/smart-contracts.md)
 
 ## Links
 
