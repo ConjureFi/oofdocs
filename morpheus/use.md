@@ -216,3 +216,52 @@ function supportFeeds(uint256[] memory feedIds,
 * `values`: This is the new bounty amount that you want to pay for the updated feed. You need to pass it as an array of uint256 values.
 
 Note that you need to check that the timestamp is newer than the last timestamp in your contract to make sure the update has been sent and the datas the new update.
+
+
+
+Sample NFT Chat with AI response contract
+
+
+
+```
+    function mint(address to, string calldata _tag) public payable virtual {
+        require(msg.value >= price+10000000000000000);
+        _mint(to, 1);
+        tag[totalSupply()] = _tag;
+        artist[totalSupply()] = msg.sender;
+        time[totalSupply()] = block.timestamp;
+        //create AI reply request
+        string[] memory apiEndpoint = new string[](1);
+        string[] memory apiEndpointPath = new string[](1);
+        uint256[] memory decimals = new uint256[](1);
+        uint256[] memory bounties = new uint256[](1);
+//ai request
+        apiEndpoint[0] = "GPT";
+//prompt
+        apiEndpointPath[0] = _tag;
+        decimals[0] = 0;
+        bounties[0] = 10000000000000000;
+        
+        uint256[] memory feeds = oracle.requestFeeds{value: 10000000000000000}(
+            apiEndpoint,
+            apiEndpointPath,
+            decimals,
+            bounties
+        );
+//store reply feed ID
+        AI[totalSupply()] = feeds[0];
+    }
+
+    //_
+    function getTag(
+        uint256 id
+    ) public view returns (string memory, address, uint256, string memory) {
+//pull reply
+         uint256[] memory feeds = new uint256[](1);
+        feeds[0] = AI[id];
+        string[] memory feedVal = new string[](1);
+
+        (, , , , , feedVal) = oracle.getFeeds(feeds);
+        return (tag[id], artist[id], time[id], feedVal[0]);
+    }
+```
