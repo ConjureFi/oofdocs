@@ -10,7 +10,7 @@
 
 ### BSC/Polygon/Arbitrum/Optimism/FTM/Sepolia
 
-0x0000000000ef2f8d8bf81d959e5fdb81d497c25c[\
+0x0000000000071821e8033345a7be174647be0706[\
 ](https://goerli.basescan.org/address/0xb064A415E6414956ff28B49fd3bD6ed6d703C4E4#writeContract)
 
 ###
