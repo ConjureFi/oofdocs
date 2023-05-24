@@ -27,3 +27,10 @@ For enhanced security, the staking mechanism in Morpheus permits users to stake 
 ### Conclusion
 
 $SCRY and the Morpheus protocol are set to revolutionize the way oracles operate in the blockchain sphere. By incentivizing honest data provision, facilitating stake delegation, and implementing robust security measures, the protocol creates an environment where trust is rewarded, and users can be confident in the data they utilize. As a result, the potential for blockchain-based applications and smart contracts is extended further, opening up new possibilities in the world of decentralized finance and beyond.
+
+Token address\
+0x0000000000071821e8033345a7be174647be0706\
+\
+Token Market
+
+[https://app.uniswap.org/#/swap?inputCurrency=ETH\&outputCurrency=0x0000000000071821e8033345a7be174647be0706](https://app.uniswap.org/#/swap?inputCurrency=ETH\&outputCurrency=0x0000000000071821e8033345a7be174647be0706)
