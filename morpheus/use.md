@@ -217,7 +217,99 @@ function supportFeeds(uint256[] memory feedIds,
 
 Note that you need to check that the timestamp is newer than the last timestamp in your contract to make sure the update has been sent and the datas the new update.
 
+## Crosschain Data Lookup
 
+The Crosschain Data Lookup `XCHAIN`feature offers two main functions, `XDATA` and `XBALANCE`, designed to allow for data extraction across various blockchains. This ability to perform crosschain lookups opens up a multitude of possibilities for complex applications.
+
+### Parameters for XDATA/XBALANCE
+
+* `RPC` - The RPC URL of the destination EVM compatible blockchain.
+* `ADDRS` - The contract address to interact with.
+* `DATA` - The encoded function call data.
+* `FLAG` - A flag for XDATA for contract presets to make it easier to do common lookups like ERC20 balances using an address in the data rather than the full calldata. 0 for custom with any calldata.
+
+**Constructed as**\
+apiEndpoint = 'XCHAIN'\
+This flags the oracle that you are making a XDATA or XBALANCE request for another chain.\
+\
+apiEndpointPath = "XDATA?RPC=" + EVMNETWORKRPCHERE + "\&ADDRS=" + TARGETCONTRACTADDRSHERE + "\&DATA=" + CALLDATAHERE + "\&FLAG=0";
+
+### XDATA Function
+
+The `XDATA`function performs a crosschain lookup for any read-only contract function.
+
+**Usage**
+
+```solidity
+solidityCopy codeMorpheus morpheus = Morpheus(morpheusAddress);
+
+string[] memory apiEndpoint = new string[](1);
+apiEndpoint[0] = "XCHAIN";
+
+string[] memory apiEndpointPath = new string[](1);
+apiEndpointPath[0] = "XDATA?RPC=" + EVMNETWORKRPCHERE + "&ADDRS=" + TARGETCONTRACTADDRSHERE + "&DATA=" + CALLDATAHERE + "&FLAG=0";
+
+uint256[] memory decimals = new uint256[](1);
+decimals[0] = 0;
+
+uint256[] memory bounties = new uint256[](1);
+bounties[0] = BOUNTYVALUEHERE;
+
+uint256[] memory feeds = morpheus.requestFeeds(apiEndpoint, apiEndpointPath, decimals, bounties);
+```
+
+In this usage example, `FLAG` is set to 0 which signifies a call to a function other than 'balanceOf'.
+
+### XBALANCE Function
+
+The `XBALANCE` function performs a crosschain lookup of an account's balance in the native token.
+
+**Usage**
+
+```solidity
+solidityCopy codeMorpheus morpheus = Morpheus(morpheusAddress);
+
+string[] memory apiEndpoint = new string[](1);
+apiEndpoint[0] = "XCHAIN";
+
+string[] memory apiEndpointPath = new string[](1);
+apiEndpointPath[0] = "XBALANCE?RPC=" + EVMNETWORKRPCHERE + "&ADDRS=" + ACCOUNTADDRESSHERE;
+
+uint256[] memory decimals = new uint256[](1);
+decimals[0] = 0;
+
+uint256[] memory bounties = new uint256[](1);
+bounties[0] = BOUNTYVALUEHERE;
+
+uint256[] memory feeds = morpheus.requestFeeds(apiEndpoint, apiEndpointPath, decimals, bounties);
+```
+
+These examples demonstrate how developers can leverage the Morpheus oracle contract to request crosschain data or balance. The execution time may vary based on the response from the destination chain and the gas price of the network where Morpheus is deployed.
+
+### Crosschain Data Lookup - `getFeeds` Function
+
+The `getFeeds` function retrieves the latest data from multiple feeds on the Morpheus oracle.
+
+```solidity
+solidityCopy codefunction getFeeds(uint256[] memory feedIDs) public view returns (
+    uint256[] memory value,
+    uint256[] memory decimals,
+    uint256[] memory timestamp,
+    string[] memory valueStr,
+    string[] memory APIendpoint,
+    string[] memory APIpath
+);
+```
+
+#### Parameters:
+
+* `feedIDs (uint256[] memory)`: An array of feed IDs to retrieve values for.
+
+### Returns
+
+* `value (uint256[] memory)`: An array of the latest values of the feeds corresponding to the provided feed IDs.
+* `timestamp (uint256[] memory)`: An array of Unix timestamps (in seconds) of the latest updates for the feeds corresponding to the provided feed IDs.
+* `valueStr (string[] memory)`: An array of the latest string values of the feeds corresponding to the provided feed IDs. This is where the raw hexadecimal ABI-encoded data from an `XDATA` request is returned if the `FLAG` was set to `0`. This raw data can be decoded using Solidity's ABI decoding functions. [This example](https://solidity-by-example.org/abi-decode/) provides a helpful guide on how to decode the ABI in Solidity. On the other hand, for `XBALANCE` requests or ERC20 balance requests with `FLAG` set to `1`, the balance is returned as a decimal string in the `value` array.
 
 ### Sample NFT Chat with AI response contract
 
