@@ -257,7 +257,7 @@ The `XDATA`function performs a crosschain lookup for any read-only contract func
 **Usage**
 
 ```solidity
-solidityCopy codeMorpheus morpheus = Morpheus(morpheusAddress);
+Morpheus morpheus = Morpheus(morpheusAddress);
 
 string[] memory apiEndpoint = new string[](1);
 apiEndpoint[0] = "XCHAIN";
@@ -283,7 +283,7 @@ The `XBALANCE` function performs a crosschain lookup of an account's balance in 
 **Usage**
 
 ```solidity
-solidityCopy codeMorpheus morpheus = Morpheus(morpheusAddress);
+Morpheus morpheus = Morpheus(morpheusAddress);
 
 string[] memory apiEndpoint = new string[](1);
 apiEndpoint[0] = "XCHAIN";
@@ -307,7 +307,7 @@ These examples demonstrate how developers can leverage the Morpheus oracle contr
 The `getFeeds` function retrieves the latest data from multiple feeds on the Morpheus oracle.
 
 ```solidity
-solidityCopy codefunction getFeeds(uint256[] memory feedIDs) public view returns (
+function getFeeds(uint256[] memory feedIDs) public view returns (
     uint256[] memory value,
     uint256[] memory decimals,
     uint256[] memory timestamp,
