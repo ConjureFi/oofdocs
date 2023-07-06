@@ -225,7 +225,23 @@ The Crosschain Data Lookup `XCHAIN`feature offers two main functions, `XDATA` an
 
 * `RPC` - The RPC URL of the destination EVM compatible blockchain.
 * `ADDRS` - The contract address to interact with.
-* `DATA` - The encoded function call data.
+* `DATA` - The encoded function call data. Must be ABI encoded, including fn signature. Make sure to check [https://docs.soliditylang.org/en/develop/abi-spec.html](https://docs.soliditylang.org/en/develop/abi-spec.html)
+
+**Helper Script**
+
+```javascript
+const functionSig = 'balanceOf(address)';
+const fnHash = ethers.utils.id(functionSig);  // keccak256 hash of function signature
+const functionSelector = fnHash.slice(0, 10);  // first four bytes of hash         
+const types = ['address'];
+const values = ['0x9d31e30003f253563ff108bc60b16fdf2c93abb5'];
+const encodedParams = ethers.utils.defaultAbiCoder.encode(types, values);
+// Concatenate function selector and parameters
+const encodedData = functionSelector + encodedParams.slice(2);  // remove '0x' from params
+
+//0x70a082310000000000000000000000009d31e30003f253563ff108bc60b16fdf2c93abb5
+```
+
 * `FLAG` - A flag for XDATA for contract presets to make it easier to do common lookups like ERC20 balances using an address in the data rather than the full calldata. 0 for custom with any calldata.
 
 **Constructed as**\
