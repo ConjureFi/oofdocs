@@ -108,6 +108,12 @@ Sample
 
 `morpheus -a 0x00f0000000F11a5380Da5A184F0C563B5995fee2 -r https://sepolia.infura.io/v3/6822e4e6edc847829086404ffe6d5b2b -pk 0000000000000000000000000000000000000000000000000000000000`
 
+## Testing
+
+We have included a testing tool to make sure that your oracles are operational and live. Simply use test.js to have the script send a data request using the config to your oracle, using the set RPC and private key. You'll see your node pickup the transaction as long as its running, process and submit.
+
+`node test.js`
+
 **Support**
 
 For support, join the Scry Discord or visit scry.finance to chat and learn more about the project.

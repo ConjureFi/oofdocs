@@ -163,7 +163,7 @@ Should be used for the real value represented by the front end. In the code abov
 
 Note that you need to send enough ETH for the request for gas. If there's not enough bounty to make the transaction net 0 cost for the node, it won't be picked up.
 
-### VRF
+## VRF
 
 You can `requestFeeds` with VRF by putting 'vrf' as the enpoint the salt you want to use as the path. The val will be a 256b uint.
 
@@ -327,7 +327,7 @@ function getFeeds(uint256[] memory feedIDs) public view returns (
 * `timestamp (uint256[] memory)`: An array of Unix timestamps (in seconds) of the latest updates for the feeds corresponding to the provided feed IDs.
 * `valueStr (string[] memory)`: An array of the latest string values of the feeds corresponding to the provided feed IDs. This is where the raw hexadecimal ABI-encoded data from an `XDATA` request is returned if the `FLAG` was set to `0`. This raw data can be decoded using Solidity's ABI decoding functions. [This example](https://solidity-by-example.org/abi-decode/) provides a helpful guide on how to decode the ABI in Solidity. On the other hand, for `XBALANCE` requests or ERC20 balance requests with `FLAG` set to `1`, the balance is returned as a decimal string in the `value` array.
 
-### Sample NFT Chat with AI response contract
+## Sample NFT Chat with AI response contract
 
 ```
     function mint(address to, string calldata _tag) public payable virtual {
