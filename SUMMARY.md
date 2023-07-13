@@ -14,9 +14,6 @@
 
 * [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
 * [Staking](scry-nft-and-staking-usdscry/staking.md)
-* [Scry NFT](scry-nfts-and-licenses/scry-nft-token.md)
-* [Licensing and Perks](scry-nfts-and-licenses/licensing-and-perks.md)
-* [Purchasing a License](scry-nfts-and-licenses/purchasing-a-license.md)
 
 ## Open Oracle Framework
 
@@ -40,3 +37,7 @@
 ## Links
 
 * [Links](links/links.md)
+* [Deprecated](links/deprecated/README.md)
+  * [Purchasing a License](links/deprecated/purchasing-a-license.md)
+  * [Licensing and Perks](links/deprecated/licensing-and-perks.md)
+  * [Scry NFT](links/deprecated/scry-nft-token.md)
