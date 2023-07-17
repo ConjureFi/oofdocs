@@ -1,7 +1,5 @@
 # MetaMorph: A Decentralized Oracle Tool
 
-
-
 ## Introduction
 
 MetaMorph is a flexible and robust Oracle service that allows developers to request data from multiple independent Oracle sources. This system gives developers more control and choice over where they source their data from. Key features include a quorum mechanism to ensure a sufficient number of sources have submitted data and threshold parameters to guarantee data freshness. The system also supports callback requests.
@@ -100,7 +98,7 @@ The MetaMorph contract is a powerful tool that allows developers to fetch, valid
 // SPDX-License-Identifier: MIT 
 pragma solidity ^0.8.0;
 // The MetaMorph interface interface 
-IMetaMorph { function requestFeedCallback( address[] memory morpheus, string memory APIendpoint, string memory APIendpointPath, uint256 decimals, uint256[] memory bounties, uint threshold, uint quorum, address receiveAddrs, uint256 bountyGuardian ) external payable returns (uint256[] memory); }
+interface IMetaMorph { function requestFeedCallback( address[] memory morpheus, string memory APIendpoint, string memory APIendpointPath, uint256 decimals, uint256[] memory bounties, uint threshold, uint quorum, address receiveAddrs, uint256 bountyGuardian ) external payable returns (uint256[] memory); }
 contract MyContract { IMetaMorph public metamorph;// This is the data we're interested in
 uint256 public receivedData;
 
