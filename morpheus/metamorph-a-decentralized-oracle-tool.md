@@ -92,9 +92,9 @@ function requestFeedCallback(
 
 ### Conclusion
 
-The MetaMorph contract is a powerful tool that allows developers to fetch, validate, and process data from multiple, independent oracles in a decentralized and customizable way. By leveraging features like threshold checks, quorum requirements, and callback functionality, developers can ensure that their data is secure and decentralized.\
-\
-Sample
+The MetaMorph contract is a powerful tool that allows developers to fetch, validate, and process data from multiple, independent oracles in a decentralized and customizable way. By leveraging features like threshold checks, quorum requirements, and callback functionality, developers can ensure that their data is secure and decentralized.
+
+## **Sample**
 
 ```solidity
 // SPDX-License-Identifier: MIT 
