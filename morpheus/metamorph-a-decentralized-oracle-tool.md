@@ -4,9 +4,114 @@
 
 MetaMorph is a flexible and robust Oracle service that allows developers to request data from multiple independent Oracle sources. This system gives developers more control and choice over where they source their data from. Key features include a quorum mechanism to ensure a sufficient number of sources have submitted data and threshold parameters to guarantee data freshness. The system also supports callback requests.
 
-In this guide, we will go over the key aspects of using MetaMorph, providing detailed explanations and examples for various use cases.
+You can explore some available oracles for your chosen network here. This is not all available oracles, and you are able to even host your own oracle yourself\
+[https://morpheus.scry.finance/](https://morpheus.scry.finance/)
+
+#### Build your own oracle
+
+[https://docs.scry.finance/docs/morpheus/build-your-own-oracle](https://docs.scry.finance/docs/morpheus/build-your-own-oracle)
 
 ## How to request data from multiple oracles
+
+### Interface
+
+```solidity
+// SPDX-License-Identifier: SCRY
+pragma solidity 0.8.6;
+
+interface IMetaMorph {
+    function getFeeds(
+        address[] calldata morpheus,
+        uint256[] calldata IDs,
+        uint256 threshold
+    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+
+    function getFeedsQuorum(
+        address[] calldata morpheus,
+        uint256[] calldata IDs,
+        uint256 threshold,
+        uint256 quorum
+    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+
+    function requestFeed(
+        address[] calldata morpheus,
+        string calldata APIendpoint,
+        string calldata APIendpointPath,
+        uint256 decimals,
+        uint256[] calldata bounties
+    ) external payable returns (uint256[] memory);
+
+    function requestFeedCallback(
+        address[] calldata morpheus,
+        string calldata APIendpoint,
+        string calldata APIendpointPath,
+        uint256 decimals,
+        uint256[] calldata bounties,
+        uint threshold,
+        uint quorum,
+        address receiveAddrs,
+        uint256 bountyGuardian
+    ) external payable returns (uint256[] memory, uint requestID);
+
+    function fillRequest(uint256 ID) external;
+
+    function refillRequest(uint256 ID,uint guardianBounty) external payable;
+
+    function updateFeeds(
+        address[] calldata morpheus,
+        uint256[] calldata IDs,
+        uint256[] calldata bounties
+    ) external payable;
+}
+// SPDX-License-Identifier: SCRY
+pragma solidity 0.8.6;
+
+interface IMetaMorph {
+    function getFeeds(
+        address[] calldata morpheus,
+        uint256[] calldata IDs,
+        uint256 threshold
+    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+
+    function getFeedsQuorum(
+        address[] calldata morpheus,
+        uint256[] calldata IDs,
+        uint256 threshold,
+        uint256 quorum
+    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+
+    function requestFeed(
+        address[] calldata morpheus,
+        string calldata APIendpoint,
+        string calldata APIendpointPath,
+        uint256 decimals,
+        uint256[] calldata bounties
+    ) external payable returns (uint256[] memory);
+
+    function requestFeedCallback(
+        address[] calldata morpheus,
+        string calldata APIendpoint,
+        string calldata APIendpointPath,
+        uint256 decimals,
+        uint256[] calldata bounties,
+        uint threshold,
+        uint quorum,
+        address receiveAddrs,
+        uint256 bountyGuardian
+    ) external payable returns (uint256[] memory, uint requestID);
+
+    function fillRequest(uint256 ID) external;
+
+    function refillRequest(uint256 ID,uint guardianBounty) external payable;
+
+    function updateFeeds(
+        address[] calldata morpheus,
+        uint256[] calldata IDs,
+        uint256[] calldata bounties
+    ) external payable;
+}
+
+```
 
 Requesting data from multiple oracles is a simple process in the MetaMorph contract. This can be achieved by calling the `requestFeed` function and specifying a list of `morpheus` addresses (representing the oracles), the `APIendpoint`, `APIendpointPath`, and `decimals` for the data you want, and an array of `bounties` to be paid to each oracle.
 
@@ -68,7 +173,7 @@ function requestFeedCallback(
         uint quorum,
         address receiveAddrs,
         uint256 bountyGuardian
-    ) external payable returns (uint256[] memory);
+    ) external payable returns (uint256[] memory,uint ID);
 ```
 
 **Parameters:**
@@ -95,54 +200,88 @@ The MetaMorph contract is a powerful tool that allows developers to fetch, valid
 ## **Sample**
 
 ```solidity
-// SPDX-License-Identifier: MIT 
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-// The MetaMorph interface interface 
-interface IMetaMorph { function requestFeedCallback( address[] memory morpheus, string memory APIendpoint, string memory APIendpointPath, uint256 decimals, uint256[] memory bounties, uint threshold, uint quorum, address receiveAddrs, uint256 bountyGuardian ) external payable returns (uint256[] memory); }
-contract MyContract { IMetaMorph public metamorph;// This is the data we're interested in
-uint256 public receivedData;
 
-// Event to log the received data
-event DataReceived(uint256 data);
+// The MetaMorph interface interface
+interface IMetaMorph {
+    function requestFeedCallback(
+        address[] memory morpheus,
+        string memory APIendpoint,
+        string memory APIendpointPath,
+        uint256 decimals,
+        uint256[] memory bounties,
+        uint threshold,
+        uint quorum,
+        address receiveAddrs,
+        uint256 bountyGuardian
+    ) external payable returns (uint256[] memory,uint requestID);
 
-// Set the address of the MetaMorph contract on deployment
-constructor(address _metamorph) {
-    metamorph = IMetaMorph(_metamorph);
+    function refillRequest(uint256 ID, uint bountyGuardian) external payable;
 }
 
-// Request data from the MetaMorph contract
-function requestData() external payable {
-    address[] memory morpheus = new address[](3);
-    morpheus[0] = 0xOracleAddress1; // replace with actual oracle address
-    morpheus[1] = 0xOracleAddress2; // replace with actual oracle address
-    morpheus[2] = 0xOracleAddress3; // replace with actual oracle address
-    
-    uint256[] memory bounties = new uint256[](3);
-    bounties[0] = 0.001 ether; // replace with actual bounty
-bounties[1] = 0.001 ether; // replace with actual bounty
-bounties[2] = 0.001 ether; // replace with actual bounty
+contract MyContract {
+    IMetaMorph public metamorph; // This is the data we're interested in
+    uint256 public receivedData;
+    uint bounties = 3;
+    uint requestID;
+    // Event to log the received data
+    event DataReceived(uint256 data);
 
-    metamorph.requestFeedCallback{value:0.004 ether}(
-        morpheus,
-        "https://api.example.com", 
-        "data", 
-        2, 
-        bounties, 
-        600, 
-        1, 
-        address(this), 
-        0.001 ether
-    );
-}
+    // Set the address of the MetaMorph contract on deployment
+    constructor(address _metamorph) {
+        metamorph = IMetaMorph(_metamorph);
+        requestData();
+    }
 
-// The callback function that the MetaMorph contract will call
-function dataCallback(uint256 data) external {
-    // Ensure the call is coming from the MetaMorph contract
-    require(msg.sender == address(metamorph), "Only MetaMorph can call this function");
-    receivedData = data;
-    // Emit the event
-    emit DataReceived(data);
-}
+    // Request data from the MetaMorph contract
+    function requestData() internal {
+        address[] memory morpheus = new address[](3);
+        morpheus[0] = 0x0000000000071821e8033345A7Be174647bE0706; // replace with actual oracle address
+        morpheus[1] = 0x0000000000071821e8033345A7Be174647bE0706; // replace with actual oracle address
+        morpheus[2] = 0x0000000000071821e8033345A7Be174647bE0706; // replace with actual oracle address
+        uint256[] memory bounty = new uint256[](3);
+        bounty[0] = 0.001 ether; // replace with actual bounty
+        bounty[1] = 0.001 ether; // replace with actual bounty
+        bounty[2] = 0.001 ether; // replace with actual bounty
+        (,requestID) = metamorph.requestFeedCallback{value: 0.004 ether}(
+            morpheus,
+            "https://api.example.com",
+            "pathtodata",
+            2, //dec
+            bounty,
+            600,
+            2,
+            address(this),
+            0.001 ether
+        );
+    }
+
+    // Refresh data from the MetaMorph contract
+    function refreshData() public payable {
+        metamorph.refillRequest{value: msg.value}(
+            requestID,
+            msg.value - ((msg.value * bounties) / (bounties + 2))
+        );
+    }
+
+    // The callback function that the MetaMorph contract will call
+    function requestCallback(
+        uint256 data,
+        string calldata strdata,
+        bytes calldata bytesdata,
+        uint reqID
+    ) external {
+        // Ensure the call is coming from the MetaMorph contract
+        require(
+            msg.sender == address(metamorph),
+            "Only MetaMorph can call this function"
+        );
+        require(requestID == reqID, "Request mismatch");
+        receivedData = data;
+        // Emit the event
+        emit DataReceived(data);
+    }
 }
 ```
 
