@@ -38,16 +38,11 @@ _Step 2: Set up your oracle in the .env file_
 1. Set up the RPC for any EVM network where your contract is deployed (e.g., Goerli).
 2. Set the OOFAddress to the oracle address you deployed.
 3. Set the PK to your private key for your oracle signer.
-4. In `initialize.js`, change the signers to the address for your private key.
 
-_Step 3: Initialize the oracle_
+_Step 3:_ Run `node morpheus.js` to start your node.
 
-1. In your environment, run `node initialize.js` to set up your oracle. You can skip this if you used createMorph.js to deploy the contract.
-
-_Step 4: Run your Morpheus node_
-
-1. Run `node morpheus.js` to start your node.
-2. Host your node on an AWS EC2 free VPS or locally. Your node will automatically run, update all feeds, and earn fees.
+1. You can use morpheus.js if do not wish to deploy using your own framework, if no oracles address is set an oracle will be deployed using the preset bytecode automatically.
+2. Host your node on an AWS EC2 free VPS, other VPS or locally. Your node will automatically run, update all feeds, and earn fees.
 
 ## For Non-Technical Users
 
