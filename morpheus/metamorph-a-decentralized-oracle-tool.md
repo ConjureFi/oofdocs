@@ -63,53 +63,6 @@ interface IMetaMorph {
         uint256[] calldata bounties
     ) external payable;
 }
-// SPDX-License-Identifier: SCRY
-pragma solidity 0.8.6;
-
-interface IMetaMorph {
-    function getFeeds(
-        address[] calldata morpheus,
-        uint256[] calldata IDs,
-        uint256 threshold
-    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
-
-    function getFeedsQuorum(
-        address[] calldata morpheus,
-        uint256[] calldata IDs,
-        uint256 threshold,
-        uint256 quorum
-    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
-
-    function requestFeed(
-        address[] calldata morpheus,
-        string calldata APIendpoint,
-        string calldata APIendpointPath,
-        uint256 decimals,
-        uint256[] calldata bounties
-    ) external payable returns (uint256[] memory);
-
-    function requestFeedCallback(
-        address[] calldata morpheus,
-        string calldata APIendpoint,
-        string calldata APIendpointPath,
-        uint256 decimals,
-        uint256[] calldata bounties,
-        uint threshold,
-        uint quorum,
-        address receiveAddrs,
-        uint256 bountyGuardian
-    ) external payable returns (uint256[] memory, uint requestID);
-
-    function fillRequest(uint256 ID) external;
-
-    function refillRequest(uint256 ID,uint guardianBounty) external payable;
-
-    function updateFeeds(
-        address[] calldata morpheus,
-        uint256[] calldata IDs,
-        uint256[] calldata bounties
-    ) external payable;
-}
 
 ```
 
@@ -192,6 +145,63 @@ function requestFeedCallback(
 
 * `ids[]` (uint256\[]): Array of IDs of the feed data requested from each Oracle.
 * requestID (uint256): ID of the data request.
+
+**You must implement the following in your contract that receives the callback**
+
+### `requestCallback` Function
+
+**Description**
+
+The `requestCallback` function is called by the MetaMorph contract when the requested data is ready. It ensures that the call is coming from the MetaMorph contract and that the request ID matches the expected value. Once the data is validated, it is stored and an event is emitted to notify that the data has been received.
+
+```solidity
+function requestCallback(
+        uint256 data,
+        string calldata strdata,
+        bytes calldata bytesdata,
+        uint reqID
+    ) external {
+    
+    }
+```
+
+**Parameters**
+
+* `data` (`uint256`): The numerical data fetched by the Oracle.
+* `strdata` (`string`): A string representation of the data fetched by the Oracle. This can be used to provide additional context or details about the data.
+* `bytesdata` (`bytes`): A bytes representation of the data fetched by the Oracle. This can be used to provide the data in a different encoding or format.
+* `reqID` (`uint`): The request ID associated with the data request. This must match the request ID that was returned by the `requestFeedCallback` function in the MetaMorph contract.
+
+#### Security Considerations
+
+* The function should be called by the MetaMorph contract. If the sender is not the MetaMorph contract, the transaction should be reverted
+* The `reqID` parameter must match the `requestID` expected by the receiving contract. If there is a mismatch, the transaction will be reverted with the message "Request mismatch."
+
+**Example Usage**
+
+```solidity
+function requestCallback(
+        uint256 data,
+        string calldata strdata,
+        bytes calldata bytesdata,
+        uint reqID
+    ) external {
+        require(
+            msg.sender == address(metamorph),
+            "Only MetaMorph can call this function"
+        );
+        require(requestID == reqID, "Request mismatch");
+        receivedData = data;
+        receivedStrData = strdata;
+        mycustomAddrs = address(bytesdata);
+        emit DataReceived(data,strdata,bytesdata);
+    }
+```
+
+**Notes**
+
+* Make sure to define the `metamorph` address and the `requestID` variable in your contract, as they are used in the requirements.
+* The `strdata` and `bytesdata` parameters can be used to provide additional information about the data, depending on the specific use case and the API being queried.
 
 ### Conclusion
 
