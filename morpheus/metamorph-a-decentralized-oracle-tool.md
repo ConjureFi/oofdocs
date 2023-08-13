@@ -78,6 +78,12 @@ function requestFeed(
     ) external payable returns (uint256[] memory);
 ```
 
+### Deployments
+
+**Sepolia**
+
+[0xcFEf2da2bcd697769ca9548CD6672133F2adf95C](https://sepolia.etherscan.io/address/0xcFEf2da2bcd697769ca9548CD6672133F2adf95C)
+
 ### Choice of data source
 
 By providing an array of Morpheus (oracles) addresses, the MetaMorph contract allows developers to specify which oracles they want to source their data from. This feature provides a level of customization and can increase the trustworthiness of the data by diversifying the data sources.
