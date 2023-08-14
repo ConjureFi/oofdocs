@@ -217,6 +217,10 @@ function supportFeeds(uint256[] memory feedIds,
 
 Note that you need to check that the timestamp is newer than the last timestamp in your contract to make sure the update has been sent and the datas the new update.
 
+## Jury - Human Defined Questions
+
+You can use **Jury** as the API endpoint and the question in the path. This will then resolve by the oracle node when they question is answered. Be specific about what you want to know.
+
 ## Crosschain Data Lookup
 
 The Crosschain Data Lookup `XCHAIN`feature offers two main functions, `XDATA` and `XBALANCE`, designed to allow for data extraction across various blockchains. This ability to perform crosschain lookups opens up a multitude of possibilities for complex applications.

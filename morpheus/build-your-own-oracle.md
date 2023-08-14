@@ -103,6 +103,19 @@ Sample
 
 `morpheus -a 0x00f0000000F11a5380Da5A184F0C563B5995fee2 -r https://sepolia.infura.io/v3/6822e4e6edc847829086404ffe6d5b2b -pk 0000000000000000000000000000000000000000000000000000000000`
 
+## Jury - Human Defined Questions
+
+**jury.js**\
+The script reads from a file named `requests.txt`. Each line in this file should contain an question and a feed ID, separated by a comma.
+
+When the script runs, it will prompt the user for each request:
+
+1. If the user types `skip`, the script will move to the next request.
+2. If the user types `delete`, the script will remove the request from the `requests.txt` file.
+3. Otherwise, the script will submit the user's input as the answer to the oracle.
+
+Do not include ',' or '$' or any other non int based data for int based requests. You can submit int based data, strings or HEX.
+
 ## Testing
 
 We have included a testing tool to make sure that your oracles are operational and live. Simply use test.js to have the script send a data request using the config to your oracle, using the set RPC and private key. You'll see your node pickup the transaction as long as its running, process and submit.
