@@ -16,9 +16,20 @@ Morpheus nodes, self-hostable oracles, are a key component of the Scry ecosystem
 
 **Preparation**
 
-Before starting, familiarize yourself with Scry's documentation. Fork the GitHub repository\
+Before starting, familiarize yourself with Scry's documentation.&#x20;
+
+\
+OPTIONAL - Fork the GitHub repository\
 [https://github.com/ScryProtocol/contracts](https://github.com/ScryProtocol/contracts)\
-&#x20;and use your preferred framework to deploy nostradamus.sol. For deploying your oracle, you can use `createMorph.js` in step 3 instead of `initialize.js` if you do not wish to deploy yourself to deploy the oracle contract through the script automatically for you.
+&#x20;and use your preferred framework to deploy nostradamus.sol.&#x20;
+
+\
+Then fork into [https://github.com/ScryProtocol/morpheus](https://github.com/ScryProtocol/morpheus)\
+For the tools and nodes.
+
+OPTIONAL- For deploying your oracle manually, you can use `initialize.js`. It will perform initialize for you
+
+If you run morpheous.js, it will perform both create and initialize for you if there's no oracle address set in the .env aswell as start the node.
 
 **Deployment Steps**
 
