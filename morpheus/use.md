@@ -219,7 +219,9 @@ Note that you need to check that the timestamp is newer than the last timestamp 
 
 ## Jury - Human Defined Questions
 
-You can use **Jury** as the API endpoint and the question in the path. This will then resolve by the oracle node when they question is answered. Be specific about what you want to know.
+You can use **Jury** as the API endpoint and the question in the path. This will then resolve by the oracle node when they question is answered. Be specific about what you want to know.\
+\
+NOT ALL ORACLES WILL SUPPORT THIS. Please check with the oracle first if they run nodes autonomously or are supporting Human Defined Questions.
 
 ## Crosschain Data Lookup
 
