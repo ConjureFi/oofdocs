@@ -88,15 +88,30 @@ PK=
 <strong>OPENAI_API_KEY=
 </strong></code></pre>
 
-Set the RPC for any EVM network where your contract is deployed (Goerli).&#x20;
+Set the **RPC** for any EVM network where your contract is deployed (Goerli).&#x20;
 
 [https://chainlist.org/](https://chainlist.org/)
 
-OPTIONAL - Set the OOFAddress to the oracle address you deployed. This address represents your independant oracle from your deployed contract/the contract that gets deployed by the scripts for your oracle and node. This is NOT an already deployed contract, it is fully independant and only controlled by you and your node.
+OPTIONAL - Set the **OOFAddress** to the oracle address you deployed. This address represents your independant oracle from your deployed contract/the contract that gets deployed by the scripts for your oracle and node. This is NOT an already deployed contract, it is fully independant and only controlled by you and your node.
 
-Set the PK to your private key for your oracle signer.
+Set the **PK** to your private key for your oracle signer.
 
-OPTIONAL - Set the OPENAI\_API\_KEY for chatGPT support.
+OPTIONAL - Set the **OPENAI\_API\_KEY** for chatGPT support.
+
+OPTIONAL - Set **WEBHOOK** to a URL based webhook to receive an update when a Jury request for human based requests are made. Can set WEBHOOKMSG to set a custom message in the '**msg**' field. **Content** returns data about the request for a default message with needed info. If you set this to a Discord Webhook, setting WEBHOOKMSG to @123YourDiscordIDhere123 it'll ping you with **content**.\
+**Webhook payload**
+
+```javascript
+payload = {
+          content: content,
+          request: request,
+          data: data,
+          bounty: bounty,
+          address: oracleAddress,
+          timestamp: timestamp,
+          msg:webhookMSG
+        };
+```
 
 For those using the non dev binaries use your prefered terminal such as cmd on windows. Then go to the binary location and do morpheus.exe or just run it as usual like any other app.
 
