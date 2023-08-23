@@ -14,7 +14,7 @@ interface Morpheus {
             uint256 value,
             uint256 decimals,
             uint256 timestamp,
-            string valStr
+            string memory valStr
         );
 
     function getFeeds(uint256[] memory feedIDs)
@@ -26,7 +26,7 @@ interface Morpheus {
             uint256[] memory timestamp,
             string[] memory APIendpoint,
             string[] memory APIpath,
-            string[] memory valStr,
+            string[] memory valStr
         );
 
     function requestFeeds(
