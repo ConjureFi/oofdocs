@@ -40,7 +40,14 @@ interface IMetaMorph {
         uint256 decimals,
         uint256[] calldata bounties
     ) external payable returns (uint256[] memory);
-
+    
+    function requestFeed(
+        address[] calldata morpheus,
+        string calldata APIendpoint,
+        string calldata APIendpointPath,
+        uint256 decimals
+    ) external payable returns (uint256[] memory);
+    
     function requestFeedCallback(
         address[] calldata morpheus,
         string calldata APIendpoint,
@@ -73,8 +80,7 @@ function requestFeed(
         address[] memory morpheus,
         string memory APIendpoint,
         string memory APIendpointPath,
-        uint256 decimals,
-        uint256[] memory bounties
+        uint256 decimals
     ) external payable returns (uint256[] memory);
 ```
 
@@ -213,7 +219,7 @@ function requestCallback(
 
 The MetaMorph contract is a powerful tool that allows developers to fetch, validate, and process data from multiple, independent oracles in a decentralized and customizable way. By leveraging features like threshold checks, quorum requirements, and callback functionality, developers can ensure that their data is secure and decentralized.
 
-## **Sample**
+## **Sample Callback**
 
 ```solidity
 // SPDX-License-Identifier: MIT
