@@ -260,7 +260,7 @@ function requestCallback(
 * Make sure to define the `metamorph` address and the `requestID` variable in your contract, as they are used in the requirements.
 * The `strdata` and `bytesdata` parameters can be used to provide additional information about the data, depending on the specific use case and the API being queried.
 
-### **Portal Functions:**
+### **Portals**
 
 **`requestFeedPortal`**
 
@@ -274,8 +274,6 @@ function requestCallback(
   * `quorum`: The minimum number of data points required to form a consensus.
 * **Returns**: A unique `requestPortalID` that is associated with the request.
 * **Usage**: Call this function with the desired parameters to request data feeds from multiple Morpheus oracles.
-
-***
 
 **`getFeedsPortal`**
 
