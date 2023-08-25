@@ -16,44 +16,88 @@ You can explore some available oracles for your chosen network here. This is not
 ### Interface
 
 ```solidity
-// SPDX-License-Identifier: SCRY
-pragma solidity 0.8.6;
+interface IMetamorph {
+    
+    event dataCallbackRequested(uint requestID, uint bounty);
 
-interface IMetaMorph {
+    // Functions to get data feeds
     function getFeeds(
-        address[] calldata morpheus,
-        uint256[] calldata IDs,
+        address[] memory morpheus,
+        uint256[] memory IDs,
         uint256 threshold
-    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+    )
+        external
+        view
+        returns (uint256 value, string memory valStr, bytes memory valBytes);
+
+    function getFeedsRaw(
+        address[] memory morpheus,
+        uint256[] memory IDs
+    )
+        external
+        view
+        returns (
+            uint256[] memory value,
+            string[] memory valStr,
+            bytes[] memory valBytes,
+            uint256[] memory valTimestamps
+        );
 
     function getFeedsQuorum(
-        address[] calldata morpheus,
-        uint256[] calldata IDs,
+        address[] memory morpheus,
+        uint256[] memory IDs,
         uint256 threshold,
         uint256 quorum
-    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+    )
+        external
+        view
+        returns (
+            uint256 value,
+            string memory valStr,
+            bytes memory valBytes
+        );
+
+    function getFeedsPortal(
+        uint256 ID
+    )
+        external
+        view
+        returns (
+            uint256 value,
+            string memory valStr,
+            bytes memory valBytes
+        );
 
     function requestFeed(
-        address[] calldata morpheus,
-        string calldata APIendpoint,
-        string calldata APIendpointPath,
+        address[] memory morpheus,
+        string memory APIendpoint,
+        string memory APIendpointPath,
         uint256 decimals,
-        uint256[] calldata bounties
+        uint256[] memory bounties
     ) external payable returns (uint256[] memory);
-    
+
     function requestFeed(
-        address[] calldata morpheus,
-        string calldata APIendpoint,
-        string calldata APIendpointPath,
+        address[] memory morpheus,
+        string memory APIendpoint,
+        string memory APIendpointPath,
         uint256 decimals
     ) external payable returns (uint256[] memory);
-    
-    function requestFeedCallback(
-        address[] calldata morpheus,
-        string calldata APIendpoint,
-        string calldata APIendpointPath,
+
+    function requestFeedPortal(
+        address[] memory morpheus,
+        string memory APIendpoint,
+        string memory APIendpointPath,
         uint256 decimals,
-        uint256[] calldata bounties,
+        uint256 threshold,
+        uint256 quorum
+    ) external payable returns (uint256 requestPortalID);
+
+    function requestFeedCallback(
+        address[] memory morpheus,
+        string memory APIendpoint,
+        string memory APIendpointPath,
+        uint256 decimals,
+        uint256[] memory bounties,
         uint threshold,
         uint quorum,
         address receiveAddrs,
@@ -62,15 +106,16 @@ interface IMetaMorph {
 
     function fillRequest(uint256 ID) external;
 
-    function refillRequest(uint256 ID,uint guardianBounty) external payable;
+    function refillRequest(uint256 ID, uint guardianBounty) external payable;
 
     function updateFeeds(
-        address[] calldata morpheus,
-        uint256[] calldata IDs,
-        uint256[] calldata bounties
+        address[] memory morpheus,
+        uint256[] memory IDs,
+        uint256[] memory bounties
     ) external payable;
-}
 
+    function updatePortal(uint ID) external payable;
+}
 ```
 
 Requesting data from multiple oracles is a simple process in the MetaMorph contract. This can be achieved by calling the `requestFeed` function and specifying a list of `morpheus` addresses (representing the oracles), the `APIendpoint`, `APIendpointPath`, and `decimals` for the data you want, and an array of `bounties` to be paid to each oracle.
@@ -214,6 +259,86 @@ function requestCallback(
 
 * Make sure to define the `metamorph` address and the `requestID` variable in your contract, as they are used in the requirements.
 * The `strdata` and `bytesdata` parameters can be used to provide additional information about the data, depending on the specific use case and the API being queried.
+
+### **Portal Functions:**
+
+**`requestFeedPortal`**
+
+* **Description**: This function allows users to request feeds for multiple Morpheus oracles. It stores the parameters of this request, like the list of oracles (`morpheus`), API endpoint details, decimals, and more. The data is stored in the `request` mapping using a unique `requestPortalID`.
+* **Parameters**:
+  * `morpheus`: An array of addresses for the Morpheus oracles.
+  * `APIendpoint`: The API endpoint string for the request.
+  * `APIendpointPath`: The path for the API endpoint.
+  * `decimals`: The number of decimals for the returned value.
+  * `threshold`: The time threshold for the data.
+  * `quorum`: The minimum number of data points required to form a consensus.
+* **Returns**: A unique `requestPortalID` that is associated with the request.
+* **Usage**: Call this function with the desired parameters to request data feeds from multiple Morpheus oracles.
+
+***
+
+**`getFeedsPortal`**
+
+* **Description**: Retrieve the consolidated data from the multiple Morpheus oracles, based on a previously created portal request. This function internally calls `getFeedsQuorum` with parameters from the request associated with the provided `ID`.
+* **Parameters**:
+  * `ID`: The unique identifier (`requestPortalID`) of the request.
+* **Returns**:
+  * `value`: The median value of the data feeds.
+  * `valStr`: The most used string in the data feeds.
+  * `valBytes`: The bytes representation of the most used string.
+* **Usage**: After making a portal request using `requestFeedPortal`, call this function with the `requestPortalID` to retrieve the consolidated data.
+
+**`updatePortal`**
+
+* **Description**: Allows a user to update an existing portal requests oracle data. This function calculates the bounty required for each Morpheus oracle based on the sent amount (`msg.value`) and updates the feeds using `updateFeeds`.
+* **Parameters**:
+  * `ID`: The unique identifier (`requestPortalID`) of the request to be updated.
+* **Usage**: If you've previously made a portal request and wish to update it, use this function, specifying the `requestPortalID` and sending the required bounty amount.
+
+**Supporting Structures and Mappings:**
+
+**`requeststruct`**
+
+* **Description**: A structure that stores details about a request.
+* **Fields**:
+  * `ids`: An array of unique identifiers for the request.
+  * `morpheus`: An array of addresses for the Morpheus oracles.
+  * `threshold`: The time threshold for the data.
+  * `quorum`: The minimum number of data points required to form a consensus.
+
+**`request`**
+
+* **Description**: A mapping that maps a unique `requestPortalID` to a `requeststruct`, storing the details of each request.
+* **Usage**: Used internally to store and retrieve details of each portal request.
+
+#### How to use:
+
+1.  **Initiating a Portal Request**:
+
+    If you want to request data feeds from multiple Morpheus oracles, use the `requestFeedPortal` function. Provide the required parameters, such as the addresses of the oracles, API endpoint details, decimals, threshold, and quorum. Once executed, the function will return a unique `requestPortalID`.
+2.  **Retrieving Data from a Portal Request**:
+
+    After creating a portal request, you can retrieve the consolidated data by calling `getFeedsPortal`. Provide the `requestPortalID` as a parameter, and the function will return the consolidated data.
+3.  **Updating a Portal Request**:
+
+    If you need to update the data from the Morpheus oracles in an existing portal request, call the `updatePortal` function. Specify the `requestPortalID` and send the required amount of Ether as the bounty. The function will update the data based on the provided bounty.t
+
+#### Portals: An Overview
+
+**Portals** act as a standardized and easy to use template for oracle requests across multiple oracles, while allowing for full customizability and independance. Think of them as "presets" or "templates" for oracle lookups. These presets allow for the consistent and streamlined access to external data.
+
+#### Key Aspects of Portals:
+
+1. **Ease of Use**:
+   * Portals standardize oracle requests. Instead of crafting a unique oracle request every time, users can simply invoke a portal with a known set of parameters. This makes it much simpler for developers and contracts to get the information they need without reinventing the wheel each time or storing unneeded data thats only needed once.
+2. **Sharing & Reusability**:
+   * Developers or data providers can create specific portal presets that are known to be reliable and share them across the community. This allows for reuse, where others can leverage these established portals instead of creating their own. These portals can also be shared around to get use for oracles or to create easy to use plug and play requests and lookup.
+   * By establishing a shared set of portal presets, it ensures that there's consistency in the data being accessed across different contracts or platforms.
+3. **Simplified Data Retrieval**:
+   * Portals abstract away much of the complexity involved in making oracle requests. This means contracts or developers don't need to understand the intricacies of each oracle or external data source; they just interact with the portal.
+4. **Transparency**:
+   * Given that these portals are onchain, every access or data pull is transparent and can be audited. This ensures that there's no malicious or unintentional alteration of data during its retrieval.
+   * It provides a clear history of data access patterns, ensuring that stakeholders can verify the data's provenance and the reliability of its source.
 
 ### Conclusion
 
