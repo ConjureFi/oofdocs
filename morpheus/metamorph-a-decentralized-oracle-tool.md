@@ -67,7 +67,7 @@ interface IMetamorph {
             uint256 value,
             string memory valStr,
             bytes memory valBytes,
-        uint timestamp
+            uint timestamp
         );
 
     function requestFeed(
@@ -158,7 +158,7 @@ function getFeeds(
         address[] memory morpheus,
         uint256[] memory IDs,
         uint256 threshold
-    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes,uint timestamp);
 ```
 
 ### Quorum for source validation
@@ -171,7 +171,7 @@ function getFeedsQuorum(
         uint256[] memory IDs,
         uint256 threshold,
         uint256 quorum
-    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes);
+    ) external view returns (uint256 value, string memory valStr, bytes memory valBytes,uint timestamp);
 ```
 
 ### Requests with callbacks
@@ -222,6 +222,7 @@ function requestCallback(
         uint256 data,
         string calldata strdata,
         bytes calldata bytesdata,
+        uint timestamp,
         uint reqID
     ) external {
     
@@ -233,6 +234,7 @@ function requestCallback(
 * `data` (`uint256`): The numerical data fetched by the Oracle.
 * `strdata` (`string`): A string representation of the data fetched by the Oracle. This can be used to provide additional context or details about the data.
 * `bytesdata` (`bytes`): A bytes representation of the data fetched by the Oracle. This can be used to provide the data in a different encoding or format.
+* `timestamp`(`uint256`): The average timestamp from data fetched by the Oracle
 * `reqID` (`uint`): The request ID associated with the data request. This must match the request ID that was returned by the `requestFeedCallback` function in the MetaMorph contract.
 
 #### Security Considerations
@@ -247,6 +249,7 @@ function requestCallback(
         uint256 data,
         string calldata strdata,
         bytes calldata bytesdata,
+        uint timestamp,
         uint reqID
     ) external {
         require(
@@ -290,6 +293,7 @@ function requestCallback(
   * `value`: The median value of the data feeds.
   * `valStr`: The most used string in the data feeds.
   * `valBytes`: The bytes representation of the most used string.
+  * `timestamp`: The average value of the data feeds timestamps for submits.
 * **Usage**: After making a portal request using `requestFeedPortal`, call this function with the `requestPortalID` to retrieve the consolidated data.
 
 **`updatePortal`**
@@ -421,6 +425,7 @@ contract MyContract {
         uint256 data,
         string calldata strdata,
         bytes calldata bytesdata,
+        uint timestamp,
         uint reqID
     ) external {
         // Ensure the call is coming from the MetaMorph contract
