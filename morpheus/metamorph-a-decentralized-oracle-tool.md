@@ -28,7 +28,7 @@ interface IMetamorph {
     )
         external
         view
-        returns (uint256 value, string memory valStr, bytes memory valBytes);
+        returns (uint256 value, string memory valStr, bytes memory valBytes,uint timestamp);
 
     function getFeedsRaw(
         address[] memory morpheus,
@@ -54,7 +54,8 @@ interface IMetamorph {
         returns (
             uint256 value,
             string memory valStr,
-            bytes memory valBytes
+            bytes memory valBytes,
+            uint timestamp
         );
 
     function getFeedsPortal(
@@ -65,7 +66,8 @@ interface IMetamorph {
         returns (
             uint256 value,
             string memory valStr,
-            bytes memory valBytes
+            bytes memory valBytes,
+        uint timestamp
         );
 
     function requestFeed(
