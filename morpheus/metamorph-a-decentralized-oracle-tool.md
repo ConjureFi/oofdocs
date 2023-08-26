@@ -131,9 +131,13 @@ function requestFeed(
 
 ### Deployments
 
+**Optimism**
+
+[0xd3233c02adAAE7ad27cA43d03A6b965cd9a638c0](https://optimistic.etherscan.io/address/0xd3233c02adAAE7ad27cA43d03A6b965cd9a638c0)
+
 **Sepolia**
 
-[0xcFEf2da2bcd697769ca9548CD6672133F2adf95C](https://sepolia.etherscan.io/address/0xcFEf2da2bcd697769ca9548CD6672133F2adf95C)
+[0x7Fd992696B7aEab1B9Cadce6D748971De8209e85](https://sepolia.etherscan.io/address/0x7Fd992696B7aEab1B9Cadce6D748971De8209e85)
 
 ### Choice of data source
 
