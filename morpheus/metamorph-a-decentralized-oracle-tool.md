@@ -142,7 +142,7 @@ function requestFeed(
 [0x7Fd992696B7aEab1B9Cadce6D748971De8209e85](https://sepolia.etherscan.io/address/0x7Fd992696B7aEab1B9Cadce6D748971De8209e85)
 
 **Base**\
-[https://basescan.org/address/0xdb66b4d2C4bE0f26D07Cfc4a9166d437C8243f16#code](https://basescan.org/address/0xdb66b4d2C4bE0f26D07Cfc4a9166d437C8243f16#code)
+[0xdb66b4d2C4bE0f26D07Cfc4a9166d437C8243f16#code](https://basescan.org/address/0xdb66b4d2C4bE0f26D07Cfc4a9166d437C8243f16#code)
 
 ### Choice of data source
 
