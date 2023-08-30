@@ -12,4 +12,8 @@ One of the most significant advantages of Morpheus is its ability to access any 
 
 Morpheus is also designed to be network-agnostic, which means that it can be used on any EVM network. This makes it easier for developers to build applications that are not limited to a particular blockchain, but that can be used on any network that supports EVM.
 
+Allowing anyone to easily create their own oracles allows you to source your data from sources you know, or that you have reason to believe are honest actors. This could be because of relationships to them, time in the space, simply being public and doxd or being a project that you already are invested in.
+
+Batching allows you to take multiple oracles, all of which you choose, such that even if the oracle is NOT honest, as long as the majority are honest your data is secure, so not only would they need to be a malicious, they would need to coordinate specifically to attack you among the other oracles you have chosen and the attack would be isolated to that set rather than on the system. The key heres that you CHOOSE which oracles you use, you are not just given a feed like all other oracles that you need to believe all signers for allowing unmatched choice, customization and security.
+
 Morpheus is an exciting new tool that is set to revolutionize the way developers build decentralized applications. By enabling real-time data requests and access to any API endpoint, Morpheus makes it easier to create applications that are more relevant to the real world. With its network-agnostic design, Morpheus can be used on any EVM network, making it a powerful tool for developers looking to build decentralized applications.
