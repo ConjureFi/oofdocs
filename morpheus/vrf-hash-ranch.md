@@ -2,7 +2,7 @@
 
 In smart contract development, ensuring the security and tamper-proof nature of data is of utmost importance, particularly when random number generation is involved. Manipulation of such data can cause significant damage to the entire system. To tackle this problem, Scry introduces HashRanCh, a Verifiable Random Function (VRF) that provides a secure and verifiable way of generating random numbers in smart contracts.
 
-HashRanCh VRF Hashing Process: The VRF hashing process involves the following steps:
+#### HashRanCh VRF Hashing Process: The VRF hashing process involves the following steps:
 
 Step 1: Use the private key of the oracle as the seed for the VRF hash. This step ensures that the hash is unique to the oracle and cannot be manipulated by external factors.
 
@@ -102,5 +102,32 @@ VRF seed  0xadcbdf1fce290c09ecb84b430d4d15f2d2abaebe15b368e41736b5e07895a29b
 1  ID with VRF  9879752290979272170120564511694725973244445080113496454172745156547599793834
 Value and hash match! Value authd.
 expected  9879752290979272170120564511694725973244445080113496454172745156547599793834
+```
+
+### contract
+
+```solidity
+// SPDX-License-Identifier: MIT pragma solidity ^0.8.0;
+contract VRFVerification {
+//
+function vrfVerify(
+    bytes32 upstream,
+    uint256 parentfeedID,
+    uint256 feedID,
+    string memory salt,
+    uint256 expectedVRFValue
+) public pure returns (bool verified,bytes32 hash, bytes32 saltedHash ) { 
+    uint256 hash = upstream;
+    uint256 stop = parentfeedID- feedID;
+    if (stop > 0) {
+        for (uint256 i = 0; i < stop; i++) {
+            hash = (keccak256(abi.encodePacked(hash)));
+        }
+    }
+    
+    uint256 hash2 = uint256(keccak256(abi.encodePacked(hash, salt, feedID)));
+    
+    return ((hash2 == expectedVRFValue),hash,hash2);
+}}
 ```
 
