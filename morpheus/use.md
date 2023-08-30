@@ -2,7 +2,7 @@
 
 Developers can implement the Morpheus interface in their smart contracts to enable fetching, retrieving and supporting feed data in a decentralized manner. The interface allows developers to specify the API endpoint, API endpoint path, decimals, and bounties when requesting new feed data, and to support feed data by specifying the feed ID and value.
 
-### Interface
+## Interface
 
 ```solidity
 interface Morpheus {
@@ -45,7 +45,11 @@ interface Morpheus {
 
 The Morpheus interface is a smart contract interface that defines the functions required for fetching, retrieving and supporting feed data in a decentralized manner.
 
-#### Functions
+## **Jump to**
+
+### - [**Requesting arbitrary APIs** ](use.md#requesting-api-through-morpheus)**-** [**VRFs**](use.md#vrf) **-** [**Crosschain Data Lookup** ](use.md#crosschain-data-lookup)**-** [**Human Based Requests**](use.md#jury-human-defined-questions)
+
+### Functions
 
 ### **`getFeed(uint256 feedID)`**
 
@@ -201,7 +205,7 @@ feedValue, times,,,, = morpheus.getFeeds(feeds);
 
 0 ID with VRF 9879752290979272170120564511694725973244445080113496454172745156547599793834
 
-### Updating a feed
+## Updating a feed
 
 To update a feed that you already requested, you can call the function `supportFeeds()` with the following parameters:
 
