@@ -58,7 +58,7 @@ interface IMetamorph {
             uint timestamp
         );
 
-    function getFeedsPortal(
+    function getFeedPortal(
         uint256 ID
     )
         external
@@ -287,7 +287,7 @@ function requestCallback(
 * **Returns**: A unique `requestPortalID` that is associated with the request.
 * **Usage**: Call this function with the desired parameters to request data feeds from multiple Morpheus oracles.
 
-**`getFeedsPortal`**
+**`getFeedPortal`**
 
 * **Description**: Retrieve the consolidated data from the multiple Morpheus oracles, based on a previously created portal request. This function internally calls `getFeedsQuorum` with parameters from the request associated with the provided `ID`.
 * **Parameters**:
@@ -329,7 +329,7 @@ function requestCallback(
     If you want to request data feeds from multiple Morpheus oracles, use the `requestFeedPortal` function. Provide the required parameters, such as the addresses of the oracles, API endpoint details, decimals, threshold, and quorum. Once executed, the function will return a unique `requestPortalID`.
 2.  **Retrieving Data from a Portal Request**:
 
-    After creating a portal request, you can retrieve the consolidated data by calling `getFeedsPortal`. Provide the `requestPortalID` as a parameter, and the function will return the consolidated data.
+    After creating a portal request, you can retrieve the consolidated data by calling `getFeedPortal`. Provide the `requestPortalID` as a parameter, and the function will return the consolidated data.
 3.  **Updating a Portal Request**:
 
     If you need to update the data from the Morpheus oracles in an existing portal request, call the `updatePortal` function. Specify the `requestPortalID` and send the required amount of Ether as the bounty. The function will update the data based on the provided bounty.t
