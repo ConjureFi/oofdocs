@@ -58,7 +58,7 @@ interface IMetamorph {
             uint timestamp
         );
 
-    function getFeedPortal(
+    function getFeedsPortal(
         uint256 ID
     )
         external
@@ -122,6 +122,8 @@ interface IMetamorph {
 
 Requesting data from multiple oracles is a simple process in the MetaMorph contract. This can be achieved by calling the `requestFeed` function and specifying a list of `morpheus` addresses (representing the oracles), the `APIendpoint`, `APIendpointPath`, and `decimals` for the data you want, and an array of `bounties` to be paid to each oracle.
 
+**NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+
 ```solidity
 function requestFeed(
         address[] memory morpheus,
@@ -168,6 +170,8 @@ function getFeeds(
 
 The `getFeedsQuorum` function includes a `quorum` parameter, which ensures that a sufficient number of sources have submitted their data before a value is returned. This feature enhances the reliability of the data by requiring a minimum number of validations.
 
+**NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+
 ```solidity
 function getFeedsQuorum(
         address[] memory morpheus,
@@ -179,7 +183,7 @@ function getFeedsQuorum(
 
 ### Requests with callbacks
 
-The MetaMorph contract supports requests with callbacks. This feature allows developers to call the `requestFeedCallback` function, which triggers an event `dataCallbackRequested` after the feed request is made. When the data is ready, the `fillRequest` function can be called by watchers nodes, which triggers a callback to the specified receiver address with the fetched data.
+The MetaMorph contract supports requests with callbacks. This feature allows developers to call the `requestFeedCallback` function, which triggers an event `dataCallbackRequested` after the feed request is made. When the data is ready, the `fillRequest` function can be called by watchers nodes, which triggers a callback to the specified receiver address with the fetched data to the `requestCallback` .
 
 ```solidity
 function requestFeedCallback(
@@ -220,6 +224,8 @@ function requestFeedCallback(
 
 The `requestCallback` function is called by the MetaMorph contract when the requested data is ready. It ensures that the call is coming from the MetaMorph contract and that the request ID matches the expected value. Once the data is validated, it is stored and an event is emitted to notify that the data has been received.
 
+**NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+
 ```solidity
 function requestCallback(
         uint256 data,
@@ -242,8 +248,8 @@ function requestCallback(
 
 #### Security Considerations
 
-* The function should be called by the MetaMorph contract. If the sender is not the MetaMorph contract, the transaction should be reverted
-* The `reqID` parameter must match the `requestID` expected by the receiving contract. If there is a mismatch, the transaction will be reverted with the message "Request mismatch."
+* The function **MUST** be called by the MetaMorph contract. If the sender is not the MetaMorph contract, the transaction should be reverted
+* The `reqID` parameter SHOULD match the `requestID` expected by the receiving contract. If there is a mismatch, the transaction will be reverted with the message "Request mismatch."
 
 **Example Usage**
 
@@ -287,7 +293,7 @@ function requestCallback(
 * **Returns**: A unique `requestPortalID` that is associated with the request.
 * **Usage**: Call this function with the desired parameters to request data feeds from multiple Morpheus oracles.
 
-**`getFeedPortal`**
+**`getFeedsPortal`**
 
 * **Description**: Retrieve the consolidated data from the multiple Morpheus oracles, based on a previously created portal request. This function internally calls `getFeedsQuorum` with parameters from the request associated with the provided `ID`.
 * **Parameters**:
@@ -298,6 +304,7 @@ function requestCallback(
   * `valBytes`: The bytes representation of the most used string.
   * `timestamp`: The average value of the data feeds timestamps for submits.
 * **Usage**: After making a portal request using `requestFeedPortal`, call this function with the `requestPortalID` to retrieve the consolidated data.
+* **NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
 
 **`updatePortal`**
 
@@ -329,7 +336,7 @@ function requestCallback(
     If you want to request data feeds from multiple Morpheus oracles, use the `requestFeedPortal` function. Provide the required parameters, such as the addresses of the oracles, API endpoint details, decimals, threshold, and quorum. Once executed, the function will return a unique `requestPortalID`.
 2.  **Retrieving Data from a Portal Request**:
 
-    After creating a portal request, you can retrieve the consolidated data by calling `getFeedPortal`. Provide the `requestPortalID` as a parameter, and the function will return the consolidated data.
+    After creating a portal request, you can retrieve the consolidated data by calling `getFeedsPortal`. Provide the `requestPortalID` as a parameter, and the function will return the consolidated data.
 3.  **Updating a Portal Request**:
 
     If you need to update the data from the Morpheus oracles in an existing portal request, call the `updatePortal` function. Specify the `requestPortalID` and send the required amount of Ether as the bounty. The function will update the data based on the provided bounty.t
