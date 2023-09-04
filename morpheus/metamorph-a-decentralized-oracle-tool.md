@@ -122,7 +122,7 @@ interface IMetamorph {
 
 Requesting data from multiple oracles is a simple process in the MetaMorph contract. This can be achieved by calling the `requestFeed` function and specifying a list of `morpheus` addresses (representing the oracles), the `APIendpoint`, `APIendpointPath`, and `decimals` for the data you want, and an array of `bounties` to be paid to each oracle.
 
-**NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+**NOTE: All feeds uint values are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
 
 ```solidity
 function requestFeed(
@@ -170,7 +170,7 @@ function getFeeds(
 
 The `getFeedsQuorum` function includes a `quorum` parameter, which ensures that a sufficient number of sources have submitted their data before a value is returned. This feature enhances the reliability of the data by requiring a minimum number of validations.
 
-**NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+**NOTE: All feeds uint values are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
 
 ```solidity
 function getFeedsQuorum(
@@ -224,7 +224,7 @@ function requestFeedCallback(
 
 The `requestCallback` function is called by the MetaMorph contract when the requested data is ready. It ensures that the call is coming from the MetaMorph contract and that the request ID matches the expected value. Once the data is validated, it is stored and an event is emitted to notify that the data has been received.
 
-**NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+**NOTE: All feeds uint values are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
 
 ```solidity
 function requestCallback(
@@ -304,7 +304,7 @@ function requestCallback(
   * `valBytes`: The bytes representation of the most used string.
   * `timestamp`: The average value of the data feeds timestamps for submits.
 * **Usage**: After making a portal request using `requestFeedPortal`, call this function with the `requestPortalID` to retrieve the consolidated data.
-* **NOTE: All feeds are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
+* **NOTE: All feeds uint values are returned with 18 decimals standard, handled automatically from their oracle sources using oracle decimals and standardized to 18.**
 
 **`updatePortal`**
 
