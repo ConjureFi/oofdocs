@@ -233,11 +233,11 @@ contract VRF{
 
     function determineWinner() public {
         require(
-            vrfID!=0;
+            vrfID!=0
         );
         (uint256 vrfValue, , , ) = morpheus.getFeed(vrfID);
         require(vrfValue != 0, "Oracle not ready");
-        uint256 roll1 = (vrfValue % 100) + 1;
+        uint256 roll = (vrfValue % 100) + 1;
         if (roll>51){winner=player;}
 <strong>        player=address(0);
 </strong>    }
