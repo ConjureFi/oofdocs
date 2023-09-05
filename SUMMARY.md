@@ -9,7 +9,7 @@
 * [Use / Request Feeds](morpheus/use.md)
 * [MetaMorph: A Decentralized Oracle Tool](morpheus/metamorph-a-decentralized-oracle-tool.md)
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
-* [Deployments](morpheus/deployments.md)
+* [Deployments and Oracles Available](morpheus/deployments.md)
 
 ## Scry NFT and Staking $SCRY
 
