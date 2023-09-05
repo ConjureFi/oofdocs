@@ -169,41 +169,80 @@ Note that you need to send enough ETH for the request for gas. If there's not en
 
 ## VRF
 
-You can `requestFeeds` with VRF by putting 'vrf' as the enpoint the salt you want to use as the path. The val will be a 256b uint.
+You can `requestFeeds` with VRF by putting 'vrf' as the enpoin, the salt you want to use as the path. The val will be a 256b uint.
 
-```solidity
-Morpheus morpheus = Morpheus(morpheusAddress);
+**Sample**
 
-string[] memory apiEndpoint = new string[](1);
-apiEndpoint[0] = "vrf";
+<pre class="language-solidity"><code class="lang-solidity">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-string[] memory apiEndpointPath = new string[](1);
-apiEndpointPath[0] = "yoursalthere";
+interface Morpheus {
+    function getFeed(
+        uint256 feedID
+    )
+        external
+        view
+        returns (
+            uint256 value,
+            uint256 decimals,
+            uint256 timestamp,
+            string memory valStr
+        );
 
-uint256[] memory decimals = new uint256[](1);
-decimals[0] = 0;
+    function requestFeeds(
+        string[] calldata APIendpoint,
+        string[] calldata APIendpointPath,
+        uint256[] calldata decimals,
+        uint256[] calldata bounties
+    ) external payable returns (uint256[] memory feeds);
+}
 
-uint256[] memory bounties = new uint256[](1);
-bounties[0] = 10000000000000000;
+contract VRF{
+    Morpheus public morpheus;
+    uint vrfID;
+    address winner;
+    address player;
+    constructor() {
+        morpheus = Morpheus(0x0000000000071821e8033345A7Be174647bE0706);
+    }
 
-uint256[] memory feeds = morpheus.requestFeeds{value: 10000000000000000}(apiEndpoint, apiEndpointPath, decimals, bounties);
+    function play() public{
+    require(player==address(0));
+   player=msg.sender;
+     requestVRF();
+    }
 
-```
 
-0 ID with VRF&#x20;
+    function requestVRF() internal {
+        string[] memory apiEndpoint = new string[](1);
+        apiEndpoint[0] = "vrf";
+        string[] memory apiEndpointPath = new string[](1);
+        apiEndpointPath[0] = "";
+        uint256[] memory decimals = new uint256[](1);
+        decimals[0] = 0;
+        uint256[] memory bounties = new uint256[](1);
+        bounties[0] = 1000000000000000;
+        uint256[] memory feeds = morpheus.requestFeeds{value: 1000000000000000}(
+            apiEndpoint,
+            apiEndpointPath,
+            decimals,
+            bounties
+        );
+    vrfID= feeds[0];
+    }
 
-<pre class="language-solidity"><code class="lang-solidity"> uint256[] memory times = new uint256[](1);
-        uint256[] memory feedValue = new uint256[](1);
-feedValue, times,,,, = morpheus.getFeeds(feeds);
-//get a val from the VRF between 1-100
-<strong>//feedValue[0] = feedValues[0]%100+1;
-</strong>
-
-//feedIds[0] after request filled
-//9879752290979272170120564511694725973244445080113496454172745156547599793834
+    function determineWinner() public {
+        require(
+            vrfID!=0;
+        );
+        (uint256 vrfValue, , , ) = morpheus.getFeed(vrfID);
+        require(vrfValue != 0, "Oracle not ready");
+        uint256 roll1 = (vrfValue % 100) + 1;
+        if (roll>51){winner=player;}
+<strong>        player=address(0);
+</strong>    }
+}
 </code></pre>
-
-0 ID with VRF 9879752290979272170120564511694725973244445080113496454172745156547599793834
 
 ## Updating a feed
 
