@@ -200,6 +200,7 @@ interface Morpheus {
 contract VRF{
     Morpheus public morpheus;
     uint vrfID;
+    uint oracleFee = 100000000000000;
     address winner;
     address player;
     constructor() {
@@ -207,6 +208,7 @@ contract VRF{
     }
 
     function play() public{
+     require(msg.value>=oracleFee);
     require(player==address(0));
    player=msg.sender;
      requestVRF();
@@ -221,8 +223,8 @@ contract VRF{
         uint256[] memory decimals = new uint256[](1);
         decimals[0] = 0;
         uint256[] memory bounties = new uint256[](1);
-        bounties[0] = 1000000000000000;
-        uint256[] memory feeds = morpheus.requestFeeds{value: 1000000000000000}(
+        bounties[0] = oracleFee ;
+        uint256[] memory feeds = morpheus.requestFeeds{value: oracleFee }(
             apiEndpoint,
             apiEndpointPath,
             decimals,
