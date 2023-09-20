@@ -169,7 +169,8 @@ Note that you need to send enough ETH for the request for gas. If there's not en
 
 ## VRF
 
-You can `requestFeeds` with VRF by putting 'vrf' as the enpoin, the salt you want to use as the path. The val will be a 256b uint.
+You can `requestFeeds` for a VRF by putting 'vrf' as the enpoint, the salt you want to use as the path. The val will be a 256b uint VRF. Note each feedIDs a unique VRF so for a fresh VRF you need to use `requestFeeds` for each VRF. More info in\
+[https://docs.scry.finance/docs/morpheus/vrf-hash-ranch](use.md#vrf)
 
 **Sample**
 
