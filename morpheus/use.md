@@ -45,6 +45,10 @@ interface Morpheus {
 
 The Morpheus interface is a smart contract interface that defines the functions required for fetching, retrieving and supporting feed data in a decentralized manner.
 
+## Available Oracles and Addresses
+
+### [https://morpheus.scry.finance/](https://morpheus.scry.finance/)
+
 ## **Jump to**
 
 ### - [**Requesting arbitrary APIs** ](use.md#requesting-api-through-morpheus)**-** [**VRFs**](use.md#vrf) **-** [**Crosschain Data Lookup** ](use.md#crosschain-data-lookup)**-** [**Human Based Requests**](use.md#jury-human-defined-questions)
