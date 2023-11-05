@@ -35,7 +35,8 @@ If you run morpheous.js, it will perform both create and initialize for you if t
 
 _Step 1: Clone the repository and install dependencies_
 
-1. Clone the repo from github.com/scryprotocol/morpheus
+1. Clone the repo from github.com/scryprotocol/morpheus\
+   `git clone github.com/scryprotocol/morpheus`
 2. Run `npm install` to install necessary dependencies.
 
 _Step 2: Set up your oracle in the .env file_
@@ -47,13 +48,13 @@ _Step 2: Set up your oracle in the .env file_
 `PK=`
 
 1. Set up the RPC for any EVM network where your contract is deployed (e.g., Goerli).
-2. Set the OOFAddress to the oracle address you deployed.
+2. OPTIONAL - Set the OOFAddress to the oracle address you deployed leave empty to have morpheous.js deploy for you.
 3. Set the PK to your private key for your oracle signer.
 
 _Step 3:_ Run `node morpheus.js` to start your node.
 
 1. You can use morpheus.js if do not wish to deploy using your own framework, if no oracles address is set an oracle will be deployed using the preset bytecode automatically.
-2. Host your node on an AWS EC2 free VPS, other VPS or locally. Your node will automatically run, update all feeds, and earn fees.
+2. Host your node on an AWS EC2 free VPS, other VPS or locally. Your node will automatically run, update all feed requests, batch requests and earn fees.
 
 ## For Non-Technical Users
 
