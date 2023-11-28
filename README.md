@@ -4,7 +4,17 @@ description: Scry Open Oracle Framework
 
 # Introduction
 
-Scry is an open source, permissionless, flexible and robust framework for Oracle deployment with multifeed support, subscriptions and instant deployment. We have developed the Open Oracle Framework for high scale and flexible oracles.
+Scry is an open source, permissionless, flexible and robust framework for Oracle deployment with multifeed support, subscriptions and instant deployment. We have developed the Open Oracle Framework for high scale and flexible oracles. We are the only protocol that allows anyone to run their own fully independant, autonomous oracle with 0 code needed and deployable in <5m.\
+\
+**TLDR**
+
+* Crosschain lookup for any EVM/contract on demand
+* &#x20;Only protocol that allows anyone to run theirown fully independant, autonomous oracle with 0 code needed&#x20;
+* Ability to use any API with a robust parse engine.&#x20;
+* &#x20;Ability to run a data provider and earn fees from requests.&#x20;
+* Real-time access to any API endpoint for any data.&#x20;
+* VRFs and verifier tools based on new mechanisms.&#x20;
+* &#x20;AI agent support for autonomous data determination and interaction.
 
 **The Uniswap of Data**
 
@@ -18,7 +28,7 @@ By enabling anyone to fill requests for data, Scry allows developers and project
 
 Oracles are able to be self-deployed by developers with their own signers securing the feeds with own nodes, allowing fully decentralized deployment and data, while allowing projects to deploy in realtime as they need feeds by simply updating their source sheet.
 
-TLDR Features
+### TLDR Features
 
 1. Autonomous oracle system where devs can self deploy own oracles and use custom signers for permissionless, decentralized and secure deployment with self-controllable feed creation using custom APIs for rapid development.&#x20;
 2. The nodes are able to be deployed in <15m on any EVM by devs with 0 code needed and update feeds supported in realtime as needed.&#x20;
