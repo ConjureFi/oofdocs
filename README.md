@@ -4,7 +4,7 @@ description: Scry Open Oracle Framework
 
 # Introduction
 
-Scry is an open source, permissionless, flexible and robust framework for Oracle deployment with multifeed support, subscriptions and instant deployment. We have developed the Open Oracle Framework for high scale and flexible oracles. We are the only protocol that allows anyone to run their own fully independant, autonomous oracle with 0 code needed and deployable in <5m.\
+Scry is an open source, permissionless, flexible and robust framework for independant Oracle deployment with high scale batching, revenue earning, crosschain data and instant deployment. We have developed the Open Oracle Framework and Morpheus for high scale and flexible oracles deployable on any EVM. We are the only protocol that allows anyone to run their own fully independant, autonomous oracle with 0 code needed and deployable in <5m.\
 \
 **TLDR**
 
@@ -21,6 +21,8 @@ Scry is an open source, permissionless, flexible and robust framework for Oracle
 In the world of blockchain and decentralized systems, data is a critical component that is needed to execute smart contracts, enable dApps, and facilitate transactions. However, the problem with the current approach to data is that it is centralized even while most pretend to be decentralized, which goes against the very ethos of decentralization. This is where Data LPs and free market approaches come in.
 
 One of the biggest issues with data and oracle infrastructure in crypto is that it is monopolized by players like Chainlink, and all alternatives suffer from the same closed systems for data through set signers or a single token as the core security. This results in a centralized approach to data, which goes against the very ethos of decentralization.
+
+### Data LP
 
 Data LPs (Data Liquidity Providers) are essentially decentralized marketplaces for data. They provide a way for developers to source data from a variety of different sources, while also providing incentives for individuals and entities to contribute their data to the marketplace. In a Data LP, anyone can contribute their data and earn rewards for doing so. Developers can then purchase the data they need from the signers they choose. Scry is a pioneering a decentralized and open market data approach with Morpheus that allows anyone to easily set up and operate their own oracle and node with no technical expertise.
 

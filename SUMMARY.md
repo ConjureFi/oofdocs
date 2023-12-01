@@ -6,7 +6,10 @@
 
 * [Morpheus](morpheus/morpehus.md)
 * [Build Your Own Oracle](morpheus/build-your-own-oracle.md)
-* [Use / Request Feeds](morpheus/use.md)
+* [Contract Use and Request Feeds](morpheus/contract-use-and-request-feeds/README.md)
+  * [VRF](morpheus/contract-use-and-request-feeds/vrf.md)
+  * [Crosschain Data](morpheus/contract-use-and-request-feeds/crosschain-data.md)
+  * [Jury - Human Defined Questions](morpheus/contract-use-and-request-feeds/jury-human-defined-questions.md)
 * [MetaMorph: A Decentralized Oracle Tool](morpheus/metamorph-a-decentralized-oracle-tool.md)
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments and Oracles Available](morpheus/deployments.md)
