@@ -119,6 +119,42 @@ Returns:
 * APIendpoint (string\[] memory): An array of the API endpoints used to retrieve the values of the feeds corresponding to the provided feed IDs.
 * APIpath (string\[] memory): An array of the API paths used to retrieve the values of the feeds corresponding to the provided feed IDs.
 
+## Bounties and Fees
+
+The `requestFeeds`function is used to put a bounty for the oracle to fill a request and will only do so if profitable in gas used to fill the request. If there's not enough bounty to make the transaction net 0 cost for the node, it won't be picked up.&#x20;
+
+**Rec Fee**
+
+**L2** - 0.0001 ETH / feed request
+
+To ping a feed that you already requested with extra bounty if not enough, you can call the function `supportFeeds()` with the following parameters:
+
+```solidity
+function supportFeeds(uint256[] memory feedIds, 
+        uint256[] memory values)
+        external
+        payable
+```
+
+* `feedIds`: This is the feed ID that you want to ping. You need to pass it as an array of uint256 values.
+* `values`: This is the new bounty amount that you want to pay ontop current for the feed. You need to pass it as an array of uint256 values.
+
+## Updating a feed
+
+To update a feed that you already requested with a fresh value, you can call the function `supportFeeds()` with the following parameters:
+
+```solidity
+function supportFeeds(uint256[] memory feedIds, 
+        uint256[] memory values)
+        external
+        payable
+```
+
+* `feedIds`: This is the feed ID that you want to update. You need to pass it as an array of uint256 values.
+* `values`: This is the new bounty amount that you want to pay for the updated feed. You need to pass it as an array of uint256 values.
+
+Note that you need to check that the timestamp is newer than the last timestamp in your contract to make sure the update has been sent and the datas the new update. VRFs will not refresh.
+
 ## Requesting API through Morpheus
 
 To request an API through Morpheus, you need to call the function `requestFeeds()` with the following parameters:
