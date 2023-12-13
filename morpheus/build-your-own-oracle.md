@@ -36,7 +36,7 @@ If you run morpheous.js, it will perform both create and initialize for you if t
 _Step 1: Clone the repository and install dependencies_
 
 1. Clone the repo from github.com/scryprotocol/morpheus\
-   `git clone github.com/scryprotocol/morpheus`
+   `git clone https://github.com/scryprotocol/morpheus`
 2. Run `npm install` to install necessary dependencies.
 
 _Step 2: Set up your oracle in the .env file_
@@ -72,7 +72,7 @@ Linux\
 [morpheus-linux.zip](https://github.com/ScryProtocol/morpheus/raw/main/morpheus-linux.zip)
 
 MacOS \
-[morpheus-mac.zip](https://github.com/ScryProtocol/Morpheus/raw/main/morpheus-mac.zip)
+[morpheus-mac.zip](https://github.com/ScryProtocol/Morpheus/raw/main/morpheus-macos.zip)
 
 Windows\
 [morpheus-windows.zip](https://github.com/ScryProtocol/Morpheus/raw/main/morpheus-windows.zip)
