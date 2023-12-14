@@ -226,3 +226,191 @@ function hexCharToUint(bytes1 c) internal pure returns (uint8) {
     revert("Invalid hexadecimal character");
 }
 ```
+
+## Sample
+
+To demonstrate a sample usage of custom ABI decoding in the context of the Crosschain Data Lookup using Morpheus, let's consider an example scenario. We'll simulate a situation where a smart contract needs to decode data returned from an `XDATA` request with a custom ABI.
+
+In this example, let's assume the contract with a function `getUserInfo(address)`. The function returns multiple values: `uint256 balance, uint256 timestamp, and bool isActive`. We will encode this call, use the Morpheus oracle to get the data from another chain, and then decode the returned data.
+
+Here are the steps:
+
+1. **Encode the Function Call for `getUserInfo`:** First, we need to encode the function call for `getUserInfo` similar to how it was done for `balanceOf` in the provided script.
+2. **Make the Request Using Morpheus:** We'll use the `requestFeeds` function of Morpheus to request this data.
+3. **Decode the Returned Data:** Once the data is returned, we will use a custom function to decode it based on the expected return types from `getUserInfo`.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.12;
+
+interface Morpheus {
+    function requestFeeds(
+        string[] calldata APIendpoint,
+        string[] calldata APIendpointPath,
+        uint256[] calldata decimals,
+        uint256[] calldata bounties
+    ) external payable returns (uint256[] memory feeds);
+
+    function getFeed(
+        uint256 feedID
+    )
+        external
+        view
+        returns (
+            uint256 value,
+            uint256 decimals,
+            uint256 timestamp,
+            string memory valStr
+        );
+}
+
+contract CrosschainLookup {
+    Morpheus public morpheus;
+    string public RPC = "https://eth.llamarpc.com";
+    address public owner;
+    mapping(address => mapping(address => uint256)) public userBalanceFeed;
+    mapping(address => mapping(address => UserInfo)) public userInfo;
+
+    struct UserInfo {
+        uint256 balance;
+        uint256 timestamp;
+        bool isActive;
+    }
+
+    constructor(address _morpheus) payable {
+        owner = msg.sender;
+        morpheus = Morpheus(_morpheus);
+    }
+
+    function getUserInfo(
+        address target,
+        address EXTERNAL_CONTRACT
+    ) public payable {
+        // Encode the getUserInfo function call
+        bytes memory data = abi.encodeWithSignature(
+            "getUserInfo(address)",
+            target
+        );
+
+        // Construct the API endpoint path
+        string[] memory apiEndpoint = new string[](1);
+        apiEndpoint[0] = "XCHAIN";
+
+        string[] memory apiEndpointPath = new string[](1);
+        apiEndpointPath[0] = string.concat(
+            "XDATA?RPC=",
+            RPC,
+            "&ADDRS=",
+            bytesToHexString(addressToBytes(EXTERNAL_CONTRACT)),
+            "&DATA=",
+            bytesToHexString(data),
+            "&FLAG=0"
+        );
+
+        uint256[] memory decimals = new uint256[](1);
+        decimals[0] = 0;
+
+        uint256[] memory bounties = new uint256[](1);
+        bounties[0] = .001 ether; // Replace with actual bounty value
+
+        uint256[] memory feeds = morpheus.requestFeeds{value: .001 ether}(
+            apiEndpoint,
+            apiEndpointPath,
+            decimals,
+            bounties
+        );
+
+        userBalanceFeed[target][EXTERNAL_CONTRACT] = feeds[0];
+    }
+
+    function processUserInfo(address target, address token) public {
+        (, , , string memory encodedData) = morpheus.getFeed(
+            userBalanceFeed[target][token]
+        );
+        (uint256 balance, uint256 timestamp, bool isActive) = decodeUserInfo(
+            stringToBytes(encodedData)
+        );
+        userInfo[target][token] = UserInfo(balance, timestamp, isActive);
+    }
+
+    function decodeUserInfo(
+        bytes memory data
+    ) public pure returns (uint256 balance, uint256 timestamp, bool isActive) {
+        return abi.decode(data, (uint256, uint256, bool));
+    }
+
+    function addressToBytes(
+        address _address
+    ) public pure returns (bytes memory) {
+        bytes20 addressBytes = bytes20(_address);
+        bytes memory result = new bytes(20);
+        for (uint i = 0; i < 20; i++) {
+            result[i] = addressBytes[i];
+        }
+        return result;
+    }
+
+    function bytesToHexString(
+        bytes memory data
+    ) public pure returns (string memory) {
+        bytes memory alphabet = "0123456789abcdef";
+
+        bytes memory str = new bytes(2 + data.length * 2);
+        str[0] = "0";
+        str[1] = "x";
+        for (uint i = 0; i < data.length; i++) {
+            str[2 + i * 2] = alphabet[uint(uint8(data[i] >> 4))];
+            str[3 + i * 2] = alphabet[uint(uint8(data[i] & 0x0f))];
+        }
+        return string(str);
+    }
+
+    function stringToBytes(
+        string memory hexString
+    ) public pure returns (bytes memory) {
+        bytes memory bstr = bytes(hexString);
+        require(bstr.length >= 2, "Input string too short");
+        // Skip '0x' prefix if present
+        uint offset = 0;
+        if (bstr[0] == "0" && (bstr[1] == "x" || bstr[1] == "X")) {
+            offset = 2;
+        }
+
+        require(
+            (bstr.length - offset) % 2 == 0,
+            "Hex string must have an even number of characters"
+        );
+
+        bytes memory bytesArray = new bytes((bstr.length - offset) / 2);
+        for (uint i = 0; i < bytesArray.length; i++) {
+            bytes1 tmp1 = bstr[i * 2 + offset];
+            bytes1 tmp2 = bstr[i * 2 + offset + 1];
+            bytesArray[i] = bytes1(
+                hexCharToUint(tmp1) * 16 + hexCharToUint(tmp2)
+            );
+        }
+        return bytesArray;
+    }
+
+    function hexCharToUint(bytes1 c) internal pure returns (uint8) {
+        if (uint8(c) >= uint8(bytes1("0")) && uint8(c) <= uint8(bytes1("9"))) {
+            return uint8(c) - uint8(bytes1("0"));
+        }
+        if (uint8(c) >= uint8(bytes1("a")) && uint8(c) <= uint8(bytes1("f"))) {
+            return 10 + uint8(c) - uint8(bytes1("a"));
+        }
+        if (uint8(c) >= uint8(bytes1("A")) && uint8(c) <= uint8(bytes1("F"))) {
+            return 10 + uint8(c) - uint8(bytes1("A"));
+        }
+        revert("Invalid hexadecimal character");
+    }
+}
+```
+
+In this example:
+
+* `getUserInfo` function encodes a call to an external contract's `getUserInfo` function and sends it via Morpheus oracle.
+* `decodeUserInfo` takes the raw hexadecimal ABI-encoded data (as a string) and decodes it into the expected types (`uint256`, `uint256`, `bool`).
+* `processUserInfo` demonstrates how to use `decodeUserInfo` to process the data returned from the oracle.
+
+This is a high-level example. In a real-world scenario, error handling, gas optimization, and other considerations should be taken into account.
