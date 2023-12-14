@@ -188,4 +188,41 @@ function getFeeds(uint256[] memory feedIDs) public view returns (
 * `timestamp (uint256[] memory)`: An array of Unix timestamps (in seconds) of the latest updates for the feeds corresponding to the provided feed IDs.
 * `valueStr (string[] memory)`: An array of the latest string values of the feeds corresponding to the provided feed IDs. This is where the raw hexadecimal ABI-encoded data from an `XDATA` request is returned if the `FLAG` was set to `0`. This raw data can be decoded using Solidity's ABI decoding functions. [This example](https://solidity-by-example.org/abi-decode/) provides a helpful guide on how to decode the ABI in Solidity. On the other hand, for `XBALANCE` requests or ERC20 balance requests with `FLAG` set to `1`, the balance is returned as a decimal string in the `value` array. To handle first do bytes(str) to then be able to decode.
 
-##
+## Custom data
+
+## Hex data&#x20;
+
+If you need hex for your contract, the oracle will submit as a string. You can convert back to hex using this to be able to ABI decode.
+
+```solidity
+    function stringToBytes(string memory hexString) public pure returns (bytes memory) { bytes memory bstr = bytes(hexString); require(bstr.length >= 2, "Input string too short");
+    // Skip '0x' prefix if present
+    uint offset = 0;
+    if(bstr[0] == '0' && (bstr[1] == 'x' || bstr[1] == 'X')) {
+        offset = 2;
+    }
+
+    require((bstr.length - offset) % 2 == 0, "Hex string must have an even number of characters");
+
+    bytes memory bytesArray = new bytes((bstr.length - offset) / 2);
+    for (uint i = 0; i < bytesArray.length; i++) {
+        bytes1 tmp1 = bstr[i*2 + offset];
+        bytes1 tmp2 = bstr[i*2 + offset + 1];
+        bytesArray[i] = bytes1(hexCharToUint(tmp1) * 16 + hexCharToUint(tmp2));
+    }
+    return bytesArray;
+}
+
+function hexCharToUint(bytes1 c) internal pure returns (uint8) {
+    if (uint8(c) >= uint8(bytes1('0')) && uint8(c) <= uint8(bytes1('9'))) {
+        return uint8(c) - uint8(bytes1('0'));
+    }
+    if (uint8(c) >= uint8(bytes1('a')) && uint8(c) <= uint8(bytes1('f'))) {
+        return 10 + uint8(c) - uint8(bytes1('a'));
+    }
+    if (uint8(c) >= uint8(bytes1('A')) && uint8(c) <= uint8(bytes1('F'))) {
+        return 10 + uint8(c) - uint8(bytes1('A'));
+    }
+    revert("Invalid hexadecimal character");
+}
+```
