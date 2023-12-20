@@ -1,5 +1,7 @@
 ---
-description: Scry Open Oracle Framework
+description: >-
+  An open source, permissionless, flexible and robust framework for independant
+  oracle deploymentScry Open Oracle Framework
 ---
 
 # Introduction
