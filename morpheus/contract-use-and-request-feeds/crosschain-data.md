@@ -12,6 +12,8 @@ The Crosschain Data Lookup `XCHAIN`feature offers two main functions, `XDATA` an
 
 **Helper Script for** `DATA`&#x20;
 
+[https://codepen.io/Pr069/pen/NWJKOQY](https://codepen.io/Pr069/pen/NWJKOQY)
+
 ```javascript
 const functionSig = 'balanceOf(address)';
 const fnHash = ethers.utils.id(functionSig);  // keccak256 hash of function signature
