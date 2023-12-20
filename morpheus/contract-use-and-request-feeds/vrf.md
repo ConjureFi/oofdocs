@@ -1,6 +1,6 @@
 # VRF
 
-You can `requestFeeds` for a VRF by putting 'vrf' as the endpoint, the salt you want to use as the path. The val will be a 256b uint VRF. Note each feedIDs a unique VRF so for a fresh VRF you need to use `requestFeeds` for each VRF. More info in\
+To request a Verifiable Random Function (VRF) feed, use the `requestFeeds` function with 'vrf' as the endpoint. Optionally, include a unique identifier or "salt" in the APIendpointpath to ensure each VRF, preventing potential influence by the oracle. The oracle will return the VRF as a 256-bit unsigned integer (uint256). Note that each request generates a unique feed ID, so for each new VRF, a separate `requestFeeds` call is required. More info in\
 [https://docs.scry.finance/docs/morpheus/vrf-hash-ranch](vrf.md#vrf)
 
 **Sample**
