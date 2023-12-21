@@ -16,8 +16,8 @@
 
 ## Scry Token and Staking $SCRY
 
-* [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-token-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
-* [Staking](scry-token-and-staking-usdscry/staking.md)
+* [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
+* [Staking](scry-nft-and-staking-usdscry/staking.md)
 * [Distribution](scry-token-and-staking-usdscry/distribution.md)
 
 ## Open Oracle Framework

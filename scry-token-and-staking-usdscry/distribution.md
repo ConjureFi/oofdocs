@@ -1,7 +1,5 @@
 # Distribution
 
-###
-
 ### Team **Allocation (25 million, 25%)**:
 
 ### **Reserve: Eco**system **Grants, Operations, Incentives (15 million, 15%)**:
@@ -19,3 +17,5 @@
 ### **DAO Treasury (20 million, 20%)**:
 
 * $SCRY Holders and DAO members use these tokens for voting on key decisions, proposals, or changes to the protocol
+
+<figure><img src="../.gitbook/assets/0e3ec267-e13b-4478-88e1-5dbda07ee55b (7).png" alt=""><figcaption></figcaption></figure>
