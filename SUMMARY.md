@@ -13,10 +13,7 @@
 * [MetaMorph: A Decentralized Oracle Tool](morpheus/metamorph-a-decentralized-oracle-tool.md)
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments and Oracles Available](morpheus/deployments.md)
-
-***
-
-* [Veryfi - cross-chain asset verification](veryfi-cross-chain-asset-verification.md)
+* [Veryfi - cross-chain asset verification](morpheus/veryfi-cross-chain-asset-verification.md)
 
 ## Scry Token and Staking $SCRY
 
