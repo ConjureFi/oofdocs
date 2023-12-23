@@ -14,6 +14,10 @@
 * [VRF Hash RanCh](morpheus/vrf-hash-ranch.md)
 * [Deployments and Oracles Available](morpheus/deployments.md)
 
+***
+
+* [Veryfi - cross-chain asset verification](veryfi-cross-chain-asset-verification.md)
+
 ## Scry Token and Staking $SCRY
 
 * [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
