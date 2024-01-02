@@ -1,7 +1,7 @@
 ---
 description: >-
   An open source, permissionless, flexible and robust framework for independant
-  oracle deploymentScry Open Oracle Framework
+  oracle deployment
 ---
 
 # Introduction
