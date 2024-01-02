@@ -15,6 +15,11 @@
 * [Deployments and Oracles Available](morpheus/deployments.md)
 * [Veryfi - cross-chain asset verification](morpheus/veryfi-cross-chain-asset-verification.md)
 
+***
+
+* [Vain](vain/README.md)
+  * [Deep dive](vain/deep-dive.md)
+
 ## Scry Token and Staking $SCRY
 
 * [The $SCRY Token: A New Age in Oracle Collateralization and Decentralization](scry-nft-and-staking-usdscry/the-usdscry-token-a-new-age-in-oracle-collateralization-and-decentralization.md)
