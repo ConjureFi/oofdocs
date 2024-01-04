@@ -199,36 +199,26 @@ function getFeeds(uint256[] memory feedIDs) public view returns (
 If you need hex for your contract, the oracle will submit as a string. You can convert back to hex using this to be able to ABI decode.
 
 ```solidity
-    function stringToBytes(string memory hexString) public pure returns (bytes memory) { bytes memory bstr = bytes(hexString); require(bstr.length >= 2, "Input string too short");
-    // Skip '0x' prefix if present
-    uint offset = 0;
-    if(bstr[0] == '0' && (bstr[1] == 'x' || bstr[1] == 'X')) {
-        offset = 2;
+function stringToBytes(string memory input) public returns (bytes memory) {
+        bytes memory stringBytes = bytes(input);
+        bytes memory result = new bytes(20);
+        for (uint i = 2; i < stringBytes.length; i += 2) {
+            result[(i - 2) / 2] = bytes1(_hexCharToByte(stringBytes[i]) << 4 | _hexCharToByte(stringBytes[i + 1]));
+        }
+        return result;
     }
 
-    require((bstr.length - offset) % 2 == 0, "Hex string must have an even number of characters");
-
-    bytes memory bytesArray = new bytes((bstr.length - offset) / 2);
-    for (uint i = 0; i < bytesArray.length; i++) {
-        bytes1 tmp1 = bstr[i*2 + offset];
-        bytes1 tmp2 = bstr[i*2 + offset + 1];
-        bytesArray[i] = bytes1(hexCharToUint(tmp1) * 16 + hexCharToUint(tmp2));
+    function _hexCharToByte(bytes1 char) internal pure returns (bytes1) {
+        if (uint8(char) >= 48 && uint8(char) <= 57) {
+            return bytes1(uint8(char) - 48);
+        } else if (uint8(char) >= 65 && uint8(char) <= 70) {
+            return bytes1(uint8(char) - 55); // A = 65 in ASCII (65-10)
+        } else if (uint8(char) >= 97 && uint8(char) <= 102) {
+            return bytes1(uint8(char) - 87); // a = 97 in ASCII (97-10-32)
+        } else {
+            revert("Invalid hexadecimal character.");
+        }
     }
-    return bytesArray;
-}
-
-function hexCharToUint(bytes1 c) internal pure returns (uint8) {
-    if (uint8(c) >= uint8(bytes1('0')) && uint8(c) <= uint8(bytes1('9'))) {
-        return uint8(c) - uint8(bytes1('0'));
-    }
-    if (uint8(c) >= uint8(bytes1('a')) && uint8(c) <= uint8(bytes1('f'))) {
-        return 10 + uint8(c) - uint8(bytes1('a'));
-    }
-    if (uint8(c) >= uint8(bytes1('A')) && uint8(c) <= uint8(bytes1('F'))) {
-        return 10 + uint8(c) - uint8(bytes1('A'));
-    }
-    revert("Invalid hexadecimal character");
-}
 ```
 
 ## Sample
