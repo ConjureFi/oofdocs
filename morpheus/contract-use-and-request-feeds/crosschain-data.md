@@ -1,5 +1,7 @@
 # Crosschain Data
 
+The protocol's cross-chain functionality allows DApps to maintain interoperability and composability across various networks. Developers can now seamlessly access data from any EVM network, including Ethereum and its layer 2 networks like Polygon, Arbitrum, and Optimism. This ability eliminates complicated cross-chain data stitching, offering real-time insights and data flows between DApps on different networks.
+
 ## Crosschain Data Lookup
 
 The Crosschain Data Lookup `XCHAIN`feature offers two main functions, `XDATA` and `XBALANCE`, designed to allow for data extraction across various blockchains. This ability to perform crosschain lookups opens up a multitude of possibilities for complex applications.
