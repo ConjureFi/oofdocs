@@ -199,11 +199,20 @@ function getFeeds(uint256[] memory feedIDs) public view returns (
 If you need hex for your contract, the oracle will submit as a string. You can convert back to hex using this to be able to ABI decode.
 
 ```solidity
-function stringToBytes(string memory input) public returns (bytes memory) {
+function stringToByte(string memory input) public pure returns (bytes memory) {
         bytes memory stringBytes = bytes(input);
-        bytes memory result = new bytes(20);
-        for (uint i = 2; i < stringBytes.length; i += 2) {
-            result[(i - 2) / 2] = bytes1(_hexCharToByte(stringBytes[i]) << 4 | _hexCharToByte(stringBytes[i + 1]));
+        uint offset = 0;
+
+        // Check for '0x' or '0X' prefix and adjust the offset
+        if (stringBytes.length >= 2 && (stringBytes[0] == '0') && (stringBytes[1] == 'x' || stringBytes[1] == 'X')) {
+            offset = 2;
+        }
+
+        // The length of the result should be half the length of the input string minus the offset
+        bytes memory result = new bytes((stringBytes.length - offset) / 2);
+
+        for (uint i = offset; i < stringBytes.length; i += 2) {
+            result[(i - offset) / 2] = bytes1(_hexCharToByte(stringBytes[i]) << 4 | _hexCharToByte(stringBytes[i + 1]));
         }
         return result;
     }
