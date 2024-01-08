@@ -4,6 +4,12 @@
 
 The $SCRY token is utilized as a form of collateral within the Morpheus framework. Here's a step-by-step guide on how to stake $SCRY tokens using Etherscan. Please note that you will need to have Metamask or another web3 wallet installed and funded with $SCRY and Ether (for gas fees).
 
+## Using our dApp
+
+Simply use [https://morpheus.scry.finance/](https://morpheus.scry.finance/) to stake
+
+## Using etherscan
+
 ### Step 1: Navigate to the Contract
 
 Go to Etherscan and find the $SCRY Staking Contract address. Once you have the address, input it into the search bar on the Etherscan homepage to pull up the contract.
