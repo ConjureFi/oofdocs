@@ -20,7 +20,7 @@ The `Delta` contract is an ERC20 token implementation for put based Hedge financ
 
 [https://github.com/ScryProtocol/Contracts/blob/main/templates/HedgeDelta.sol](https://github.com/ScryProtocol/Contracts/blob/main/templates/HedgeDelta.sol)
 
-#### Key Features at a Glance:
+#### Key Features
 
 * **Effortless PUT Creation**: Customize a hedge option on your chosen asset, defining your terms for expiry and collateral.
 * **Leverage Support**: Utilize leverage on your PUT, particularly beneficial for assets with low volatility.
@@ -68,11 +68,11 @@ The `DeathRoll` contract is a unique gaming contract leveraging smart contracts 
 
 [https://github.com/ScryProtocol/Contracts/blob/main/templates/pvpDeathRoll.sol](https://github.com/ScryProtocol/Contracts/blob/main/templates/pvpDeathRoll.sol)
 
-**Key Features at a Glance**
+**Key Features**
 
 1. **Game Creation and Management**: Facilitates the creation and management of betting games between two players.
 2. **Betting Mechanism**: Players can place bets in each game, with the smart contract managing the bet amounts and rules.
-3. **Oracle Integration for Randomness**: Utilizes Morpheus Oracle for generating verifiable random numbers, essential for determining game outcomes.
+3. **Oracle Integration fRandomness**: Utilizes Morpheus Oracle for generating verifiable random numbers, essential for determining game outcomes.
 4. **Withdrawal System**: Allows players to withdraw their winnings or refunded bets.
 5. **Collector Management**: Enables changing the collector address and oracle fee.
 
@@ -149,4 +149,43 @@ This contract facilitates the creation of `HedgeInsure` contracts, allowing user
 * **Enhanced Reliability and Trust**: The integration with Morpheus Oracle enhances the trustworthiness and reliability of the insurance products, providing up-to-date and accurate data for contract settlement.
 
 Overall, the `HedgeInsure` contract introduces a novel approach to creating blockchain-based financial instruments that mimic traditional insurance products, leveraging ERC20 token standards and Oracle integration for a seamless and robust financial experience.
+
+## Veryfi Contract: Empowering Cross-Chain Balance Verification
+
+The `Veryfi` contract, developed as part of Scry's diverse range of smart contracts, is a sophisticated tool designed for verifying token balances across multiple blockchain networks. Integrating seamlessly with the Morpheus Oracle, it stands out as a significant innovation in the decentralized finance (DeFi) landscape.
+
+[https://github.com/ScryProtocol/Contracts/blob/main/templates/crosschainVeryfi](https://github.com/ScryProtocol/Contracts/blob/main/templates/crosschainVeryfi)
+
+### Key Features
+
+#### Cross-Chain Balance Queries
+
+* **Multi-Chain Support**: The contract is adept at handling balance queries across any EVM blockchains, making it a versatile tool in the DeFi space.
+* **User-Focused Queries**: Users can request the balance of any ERC20/721 token on supported chains, both for their own addresses and others.
+
+#### ERC20 Token Compatibility
+
+* **Broad Applicability**: Adhering to the ERC20 token standard, the contract ensures compatibility with a wide array of tokens across the ecosystem.
+
+### Core Components and Functionalities
+
+#### Contract Structure
+
+* **Organized Balance Storage**: Efficiently stores and manages user balance data for quick access and updates.
+* **Diverse Chain RPCs**: Supports a range of blockchains by maintaining a list of RPC URLs, demonstrating the contract's adaptability.
+
+#### Fundamental Functions
+
+* **Balance Requests**: Functions `getMyBalance` and `getBalance` enable users to initiate balance checks for any specified ERC20 token.
+* **Balance Updates**: Functions `setMyBalance` and `setBalance` update the stored balances in the contract based on the latest data from the Morpheus Oracle.
+
+#### Administrative Flexibility
+
+* **Ownership Management**: Includes features for transferring ownership and modifying essential parameters like fees and Oracle addresses.
+* **RPC Adjustments**: Permits the owner to update RPC URLs for each blockchain, ensuring the contract's relevance with evolving blockchain infrastructures.
+
+### Oracle Utilization
+
+* **Data Accuracy and Timeliness**: The Morpheus Oracle is critical in providing current and reliable balance information, essential for effective DeFi operations.
+* **Adaptive Data Retrieval**: The contract's dynamic interaction with the Oracle ensures responsiveness and utility in a rapidly changing financial ecosystem.
 
