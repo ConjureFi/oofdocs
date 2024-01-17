@@ -139,6 +139,9 @@ function supportFeeds(uint256[] memory feedIds,
 * `feedIds`: This is the feed ID that you want to ping. You need to pass it as an array of uint256 values.
 * `values`: This is the new bounty amount that you want to pay ontop current for the feed. You need to pass it as an array of uint256 values.
 
+Note - some oracles have 0 bounty fee as they are free public goods with gas costs compensated by grants.\
+These are found on [https://morpheus.scry.finance/](https://morpheus.scry.finance/)
+
 ## Updating a feed
 
 To update a feed that you already requested with a fresh value, you can call the function `supportFeeds()` with the following parameters:
