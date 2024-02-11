@@ -74,6 +74,8 @@ This function retrieves the value, decimals, and timestamp of a single feed.
 * `timestamp` (uint256): The timestamp of the feed value.
 * valStr(string): The string value of the feed if used.
 
+**If the datas a string then value will be 88888888 to flag that its a string. If negative valueStr will be set to 'negative' to flag it and value as uint.**
+
 ### **`requestFeeds(string[] calldata APIendpoint, string[] calldata APIendpointPath, uint256[] calldata decimals, uint256[] calldata bounties)`**
 
 This function is used to request new feed data by specifying the API endpoint, API endpoint path, decimals and a bounty.
@@ -118,6 +120,8 @@ Returns:
 * valueStr(string\[] memory): An array of the latest string values of the feeds corresponding to the provided feed IDs.
 * APIendpoint (string\[] memory): An array of the API endpoints used to retrieve the values of the feeds corresponding to the provided feed IDs.
 * APIpath (string\[] memory): An array of the API paths used to retrieve the values of the feeds corresponding to the provided feed IDs.
+
+If the datas a string then value will be 88888888 to flag that its a string. If negative valueStr will be set to 'negative' to flag it and value as uint.
 
 ## Bounties and Fees
 
